@@ -10,7 +10,7 @@ export default function PricingCards() {
     {
       name: "Crescimento",
       icon: Lightning,
-      price: "R$ 5.000",
+      price: "R$ 2.500",
       period: "/mês",
       description: "Perfeito para marcas em crescimento prontas para escalar",
       features: [
@@ -27,7 +27,7 @@ export default function PricingCards() {
     {
       name: "Escala",
       icon: Rocket,
-      price: "R$ 10.000",
+      price: "R$ 5.000",
       period: "/mês",
       description: "Para marcas estabelecidas buscando dominância no mercado",
       features: [
@@ -65,7 +65,7 @@ export default function PricingCards() {
   ];
 
   return (
-    <section className="relative py-32">
+    <section className="relative py-6">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

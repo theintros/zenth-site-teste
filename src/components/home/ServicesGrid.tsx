@@ -58,7 +58,7 @@ export default function ServicesGrid() {
   ];
 
   return (
-    <section id="services" className="relative py-32">
+    <section id="services" className="relative py-22">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -79,7 +79,7 @@ export default function ServicesGrid() {
           {services.map((service, index) => {
             const Icon = service.icon;
             return (
-              <GlassCard key={index} delay={index * 0.1}>
+              <GlassCard key={index} delay={index * 0.1} glowing={true}>
                 <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
                   <Icon size={28} weight="bold" className="text-primary" />
                 </div>

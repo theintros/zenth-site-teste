@@ -1,14 +1,16 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Warning, Lightbulb, RocketLaunch } from "phosphor-react";
-import GlassCard from "../GlassCard";
+import { Warning, Lightbulb } from "phosphor-react";
+import { FrostedGlassCard } from "@/components/ui/frosted-glass-card";
+import { Sparkles } from "@/components/ui/sparkles";
 
 export default function ProblemSolution() {
   return (
-    <section className="relative py-32">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+    <section className="relative overflow-hidden">
+      <div className="relative py-10">
+        <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Problem */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
@@ -16,7 +18,7 @@ export default function ProblemSolution() {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <GlassCard className="p-8 border-destructive/20">
+            <FrostedGlassCard className="p-8">
               <div className="w-16 h-16 rounded-2xl bg-destructive/10 flex items-center justify-center mb-6">
                 <Warning size={32} weight="bold" className="text-destructive" />
               </div>
@@ -37,7 +39,7 @@ export default function ProblemSolution() {
                   </li>
                 ))}
               </ul>
-            </GlassCard>
+            </FrostedGlassCard>
           </motion.div>
 
           {/* Solution */}
@@ -47,7 +49,7 @@ export default function ProblemSolution() {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <GlassCard className="p-8 border-primary/20">
+            <FrostedGlassCard className="p-8">
               <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mb-6">
                 <Lightbulb size={32} weight="bold" className="text-primary" />
               </div>
@@ -70,17 +72,23 @@ export default function ProblemSolution() {
                   </li>
                 ))}
               </ul>
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="inline-flex items-center space-x-2 px-6 py-3 bg-primary text-primary-foreground rounded-lg font-semibold cursor-pointer glow-effect"
-              >
-                <RocketLaunch size={20} weight="bold" />
-                <span>Transforme Seu Marketing</span>
-              </motion.div>
-            </GlassCard>
+            </FrostedGlassCard>
           </motion.div>
+          </div>
         </div>
+      </div>
+
+      {/* Curved bottom section with sparkles */}
+      <div className="relative -mt-32 h-96 w-full overflow-hidden [mask-image:radial-gradient(50%_50%,white,transparent)]">
+        <div className="absolute inset-0 before:absolute before:inset-0 before:bg-[radial-gradient(circle_at_bottom_center,#06b6d4,transparent_70%)] before:opacity-20" />
+        <div className="absolute -left-1/2 top-1/2 aspect-[1/0.7] z-10 w-[200%] rounded-[100%] border-t border-border bg-background" />
+        <Sparkles
+          density={1200}
+          className="absolute inset-x-0 bottom-0 h-full w-full [mask-image:radial-gradient(50%_50%,white,transparent_85%)]"
+          color="#06b6d4"
+          size={1}
+          speed={0.5}
+        />
       </div>
     </section>
   );

@@ -134,6 +134,32 @@
     text-shadow: 0 0 30px rgba(61, 196, 255, 0.3),
                  0 0 60px rgba(114, 77, 255, 0.2);
   }
+
+  @keyframes infinite-slider {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(calc(-100% - var(--gap)));
+    }
+  }
+
+  @keyframes infinite-slider-reverse {
+    from {
+      transform: translateX(calc(-100% - var(--gap)));
+    }
+    to {
+      transform: translateX(0);
+    }
+  }
+
+  .animate-infinite-slider {
+    animation: infinite-slider var(--duration) linear infinite;
+  }
+
+  .animate-infinite-slider-reverse {
+    animation: infinite-slider-reverse var(--duration) linear infinite;
+  }
 }
 
 /* Hide Next.js error overlay portal */

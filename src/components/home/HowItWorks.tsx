@@ -7,6 +7,7 @@ import {
   Rocket,
   TrendUp,
 } from "phosphor-react";
+import { ShootingStars } from "@/components/ui/shooting-stars";
 
 export default function HowItWorks() {
   const steps = [
@@ -41,7 +42,19 @@ export default function HowItWorks() {
   ];
 
   return (
-    <section className="relative py-32 bg-gradient-to-b from-transparent via-primary/5 to-transparent">
+    <section className="relative py-2 bg-gradient-to-b from-transparent via-primary/5 to-transparent overflow-hidden">
+      {/* Shooting Stars Background */}
+      <ShootingStars
+        minSpeed={15}
+        maxSpeed={25}
+        minDelay={800}
+        maxDelay={3000}
+        starColor="#06b6d4"
+        trailColor="#3b82f6"
+        starWidth={15}
+        starHeight={2}
+      />
+      
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
