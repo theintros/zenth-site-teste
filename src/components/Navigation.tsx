@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -38,12 +39,19 @@ export default function Navigation() {
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <Link href="/" className="flex items-center space-x-2 group">
+          <Link href="/" className="flex items-center group">
             <motion.div
               whileHover={{ scale: 1.05 }}
-              className="text-2xl font-bold gradient-text"
+              className="relative h-8 w-auto"
             >
-              ZENTH
+              <Image
+                src="/logo-zenth.png"
+                alt="Zenth"
+                width={120}
+                height={32}
+                className="h-8 w-auto object-contain"
+                priority
+              />
             </motion.div>
           </Link>
 

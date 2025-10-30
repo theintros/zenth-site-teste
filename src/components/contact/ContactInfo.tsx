@@ -90,7 +90,7 @@ export default function ContactInfo() {
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}
-                className="w-12 h-12 rounded-xl glass-card flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary/20 transition-all"
+                className="w-12 h-12 rounded-2xl glass-card flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary/20 hover:shadow-lg hover:shadow-primary/10 transition-all"
                 aria-label={social.label}
               >
                 <Icon size={24} weight="bold" />

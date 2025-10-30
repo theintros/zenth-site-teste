@@ -83,10 +83,10 @@ export default function FinalCTA() {
         >
           <BorderTrail
             className="bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-600"
-            size={150}
+            size={450}
             transition={{
               repeat: Infinity,
-              duration: 10,
+              duration: 12,
               ease: 'linear',
             }}
           />

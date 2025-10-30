@@ -95,12 +95,12 @@ export default function PricingCards() {
                 className="relative"
               >
                 {plan.popular && (
-                  <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-primary text-primary-foreground rounded-full text-sm font-semibold">
+                  <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1.5 bg-gradient-to-r from-cyan-500 to-blue-600 text-white rounded-full text-sm font-semibold shadow-lg z-20 whitespace-nowrap">
                     Mais Popular
                   </div>
                 )}
                 <GlassCard
-                  className={`h-full flex flex-col ${
+                  className={`relative h-full flex flex-col ${
                     plan.popular ? "border-primary/40 glow-effect" : ""
                   }`}
                   hover={false}

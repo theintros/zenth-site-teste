@@ -7,13 +7,13 @@ export default function SocialProof() {
   const stats = [
     {
       icon: Users,
-      value: "+250",
+      value: "+75",
       label: "Clientes Felizes",
       description: "Em mais de 15 setores",
     },
     {
       icon: TrendUp,
-      value: "3.5x",
+      value: "3.8x",
       label: "ROI Médio",
       description: "No primeiro ano",
     },
@@ -25,7 +25,7 @@ export default function SocialProof() {
     },
     {
       icon: ChartBar,
-      value: "+R$50M",
+      value: "+R$15M",
       label: "Receita Gerada",
       description: "Para nossos clientes",
     },

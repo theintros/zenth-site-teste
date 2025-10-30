@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import {
   LinkedinLogo,
   TwitterLogo,
@@ -43,7 +44,13 @@ export default function Footer() {
           {/* Brand Column */}
           <div className="lg:col-span-2">
             <Link href="/" className="inline-block mb-6">
-              <div className="text-3xl font-bold gradient-text">ZENTH</div>
+              <Image
+                src="/logo-zenth.png"
+                alt="Zenth"
+                width={140}
+                height={40}
+                className="h-10 w-auto object-contain"
+              />
             </Link>
             <p className="text-muted-foreground text-sm leading-relaxed max-w-sm mb-6">
               Assessoria de marketing data-driven que entrega ROI real para marcas ambiciosas através de insights estratégicos e soluções inovadoras.

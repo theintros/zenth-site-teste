@@ -37,12 +37,13 @@ export default function Differentiators() {
       {/* Sparkles Background */}
       <div className="absolute inset-0 z-0">
         <Sparkles
-          density={800}
-          speed={1.5}
+          density={120}
+          speed={1}
           color="#06b6d4"
           className="absolute inset-0"
           direction="top"
           opacitySpeed={2}
+          opacity={0.6}
         />
       </div>
 

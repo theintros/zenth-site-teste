@@ -130,12 +130,12 @@ export default function BlogGrid() {
               <input
                 type="email"
                 placeholder="seu@email.com"
-                className="flex-1 px-6 py-3 glass-card rounded-lg bg-secondary/50 border focus:border-primary/50 focus:outline-none transition-colors"
+                className="flex-1 px-6 py-3 glass-card rounded-full bg-secondary/50 border focus:border-primary/50 focus:outline-none transition-colors"
               />
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="px-8 py-3 bg-primary text-primary-foreground rounded-lg font-semibold hover:opacity-90 transition-opacity glow-effect whitespace-nowrap"
+                className="px-8 py-3 bg-gradient-to-r from-cyan-500 to-blue-600 text-white rounded-full font-semibold hover:shadow-2xl hover:shadow-cyan-500/30 transition-all whitespace-nowrap"
               >
                 Inscrever-se
               </motion.button>

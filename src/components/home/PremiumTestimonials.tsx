@@ -15,8 +15,8 @@ const testimonials = [
     results: ["280% ROI", "4 meses", "Análise completa"]
   },
   {
-    name: "Marina Silva",
-    role: "Diretora de Marketing",
+    name: "Marina Pretti",
+    role: "Head de Operações",
     company: "EcoStore Brasil",
     avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&h=150&fit=crop&crop=face",
     rating: 5,
@@ -24,7 +24,7 @@ const testimonials = [
     results: ["45% redução CAC", "Treinamento", "Estratégia data-driven"]
   },
   {
-    name: "Rafael Costa",
+    name: "Silvio Biancchi",
     role: "Fundador",
     company: "FitApp",
     avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face",
@@ -33,16 +33,16 @@ const testimonials = [
     results: ["Relatórios claros", "Suporte 24/7", "Crescimento sustentável"]
   },
   {
-    name: "Juliana Oliveira",
+    name: "Juliana Miranda",
     role: "CMO",
     company: "Luxe Fashion",
     avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&h=150&fit=crop&crop=face",
     rating: 5,
-    text: "A Zenth nos ajudou a escalar de forma inteligente. Passamos de 50 para 300 vendas mensais mantendo a mesma margem. O trabalho com Meta Ads e Google Ads foi impecável.",
+    text: "A Zenth nos ajudou a escalar de forma inteligente. Passamos de cerca de 300 para 650 vendas mensais mantendo a mesma margem. O trabalho com Meta Ads e Google Ads foi impecável.",
     results: ["6x vendas", "Mesma margem", "Escala inteligente"]
   },
   {
-    name: "Pedro Santos",
+    name: "Olair Medeiros",
     role: "Diretor Comercial",
     company: "Imobiliária Prime",
     avatar: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=150&h=150&fit=crop&crop=face",
