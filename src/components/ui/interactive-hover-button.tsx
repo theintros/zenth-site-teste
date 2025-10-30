@@ -16,16 +16,16 @@ const InteractiveHoverButton = React.forwardRef<
     <button
       ref={ref}
       className={cn(
-        "group relative cursor-pointer overflow-hidden rounded-xl bg-primary text-primary-foreground px-12 py-4 text-lg font-semibold transition-all duration-300 hover:shadow-xl hover:shadow-primary/20",
+        "group relative cursor-pointer overflow-hidden rounded-full bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-12 py-4 text-lg font-semibold transition-all duration-300 hover:shadow-2xl hover:shadow-cyan-500/30 hover:scale-105",
         className,
       )}
       {...props}
     >
       {/* Animated background blob - behind everything */}
-      <div className="absolute left-[12%] top-[43%] h-2 w-2 scale-[1] rounded-full bg-white/60 transition-all duration-300 group-hover:left-[0%] group-hover:top-[0%] group-hover:h-full group-hover:w-full group-hover:scale-[1.8] group-hover:bg-cyan-400 z-0"></div>
+      <div className="absolute left-[16%] top-[43%] h-2 w-2 scale-[1] rounded-full bg-white/80 transition-all duration-300 group-hover:left-[0%] group-hover:top-[0%] group-hover:h-full group-hover:w-full group-hover:scale-[1.8] group-hover:bg-gradient-to-r group-hover:from-blue-500 group-hover:to-purple-600 z-0"></div>
       
       {/* Initial text - visible by default */}
-      <span className="relative z-10 inline-block transition-all duration-300 group-hover:translate-x-3 group-hover:opacity-0">
+      <span className="relative z-10 inline-block transition-all duration-300 group-hover:translate-x-3 group-hover:opacity-0 translate-x-1">
         {initialText}
       </span>
       

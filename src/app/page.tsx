@@ -2,7 +2,7 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import HeroSection from "@/components/home/HeroSection";
 import FeaturedIn from "@/components/home/FeaturedIn";
-import TestimonialsCarousel from "@/components/home/TestimonialsCarousel";
+import { PremiumTestimonials } from "@/components/home/PremiumTestimonials";
 import ProblemSolution from "@/components/home/ProblemSolution";
 import HowItWorks from "@/components/home/HowItWorks";
 import ServicesGrid from "@/components/home/ServicesGrid";
@@ -23,7 +23,7 @@ export default function Home() {
         <ProblemSolution />
         <HowItWorks />
         <ServicesGrid />
-        <TestimonialsCarousel />
+        <PremiumTestimonials />
         <MissionStatement />
         <Differentiators />
         <SocialProof />

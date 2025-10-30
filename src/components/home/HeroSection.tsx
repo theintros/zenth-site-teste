@@ -2,10 +2,27 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
+import { useEffect, useMemo, useState } from "react";
 import { Particles } from "@/components/ui/particles";
 import { InteractiveHoverButton } from "@/components/ui/interactive-hover-button";
 
 export default function HeroSection() {
+  const [titleNumber, setTitleNumber] = useState(0);
+  const titles = useMemo(
+    () => ["Desempenho", "Potencial", "Resultado", "Retorno"],
+    []
+  );
+
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      if (titleNumber === titles.length - 1) {
+        setTitleNumber(0);
+      } else {
+        setTitleNumber(titleNumber + 1);
+      }
+    }, 2000);
+    return () => clearTimeout(timeoutId);
+  }, [titleNumber, titles]);
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
       {/* Particles Background */}
@@ -26,19 +43,20 @@ export default function HeroSection() {
       <div className="relative max-w-5xl mx-auto px-6 lg:px-8 py-20">
         <div className="flex flex-col items-center text-center">
           <div className="space-y-8 max-w-4xl">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-              className="flex justify-center"
-            >
-              <div className="inline-flex items-center space-x-2 px-4 py-2 rounded-full glass-card text-sm mb-6">
-                <div className="w-2 h-2 bg-primary rounded-full animate-pulse" />
-                <span className="text-muted-foreground">
-                  Excelência Baseada em Dados
-                </span>
-              </div>
-            </motion.div>
+            <div className="space-y-6">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+                className="flex justify-center"
+              >
+                <div className="inline-flex items-center space-x-2 px-4 py-2 rounded-full glass-card text-sm">
+                  <div className="w-2 h-2 bg-primary rounded-full animate-pulse" />
+                  <span className="text-muted-foreground">
+                    Excelência Baseada em Dados
+                  </span>
+                </div>
+              </motion.div>
 
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
@@ -46,9 +64,35 @@ export default function HeroSection() {
               transition={{ duration: 0.6, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
               className="text-5xl md:text-7xl font-bold leading-tight"
             >
-              Marketing no{" "}
-              <span className="gradient-text text-glow">Máximo Desempenho</span>
+              Marketing no Máximo{" "}
+              <span className="relative inline-flex overflow-hidden justify-center min-w-[280px] md:min-w-[400px]">
+                {titles.map((title, index) => (
+                  <motion.span
+                    key={index}
+                    className="absolute gradient-text font-bold left-1/2 -translate-x-1/2"
+                    initial={{ opacity: 0, y: -100 }}
+                    transition={{ type: "spring", stiffness: 50 }}
+                    animate={
+                      titleNumber === index
+                        ? {
+                            y: 0,
+                            opacity: 1,
+                          }
+                        : {
+                            y: titleNumber > index ? -150 : 150,
+                            opacity: 0,
+                          }
+                    }
+                  >
+                    {title}
+                  </motion.span>
+                ))}
+                <span className="invisible gradient-text font-bold">
+                  Desempenho
+                </span>
+              </span>
             </motion.h1>
+            </div>
 
             <motion.p
               initial={{ opacity: 0, y: 20 }}
@@ -76,7 +120,7 @@ export default function HeroSection() {
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="px-8 py-4 glass-card rounded-xl font-semibold text-lg hover:border-primary/20 transition-colors"
+                  className="px-10 py-4 glass-card rounded-full font-semibold text-lg hover:border-primary/50 hover:shadow-lg hover:shadow-primary/10 transition-all"
                 >
                   Saiba Mais
                 </motion.button>
@@ -91,9 +135,9 @@ export default function HeroSection() {
               className="grid grid-cols-3 gap-8 pt-8 max-w-2xl mx-auto"
             >
               {[
-                { value: "+250", label: "Clientes" },
+                { value: "+75", label: "Clientes" },
                 { value: "98%", label: "Satisfação" },
-                { value: "3.5x", label: "ROI Médio" },
+                { value: "3.8x", label: "ROI Médio" },
               ].map((stat, index) => (
                 <div key={index} className="space-y-1">
                   <div className="text-4xl font-bold gradient-text">

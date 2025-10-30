@@ -3,53 +3,102 @@
 import { motion } from "framer-motion";
 import { InfiniteSlider } from "@/components/ui/infinite-slider";
 import { ProgressiveBlur } from "@/components/ui/progressive-blur";
+import Image from "next/image";
 
 const MetaAds = () => (
-  <span className="text-2xl font-semibold text-muted-foreground hover:text-foreground transition-colors">
-    Meta Ads
-  </span>
+  <div className="h-[60px] flex items-center justify-center grayscale hover:grayscale-0 transition-all duration-300 opacity-70 hover:opacity-100">
+    <Image 
+      src="/logos-parceiros/meta.png" 
+      alt="Meta Ads" 
+      width={200} 
+      height={60} 
+      className="object-contain h-full w-auto"
+    />
+  </div>
 );
 
 const GoogleAds = () => (
-  <span className="text-2xl font-semibold text-muted-foreground hover:text-foreground transition-colors">
-    Google Ads
-  </span>
+  <div className="h-[60px] flex items-center justify-center grayscale hover:grayscale-0 transition-all duration-300 opacity-70 hover:opacity-100">
+    <Image 
+      src="/logos-parceiros/google.png" 
+      alt="Google Ads" 
+      width={200} 
+      height={60} 
+      className="object-contain h-full w-auto"
+    />
+  </div>
 );
 
 const N8N = () => (
-  <span className="text-2xl font-semibold text-muted-foreground hover:text-foreground transition-colors">
-    N8N
-  </span>
+  <div className="h-[60px] flex items-center justify-center grayscale hover:grayscale-0 transition-all duration-300 opacity-70 hover:opacity-100">
+    <Image 
+      src="/logos-parceiros/n8n.png" 
+      alt="N8N" 
+      width={200} 
+      height={60} 
+      className="object-contain h-full w-auto"
+    />
+  </div>
 );
 
 const CardapioWeb = () => (
-  <span className="text-2xl font-semibold text-muted-foreground hover:text-foreground transition-colors">
-    Cardápio Web
-  </span>
+  <div className="h-[60px] flex items-center justify-center grayscale hover:grayscale-0 transition-all duration-300 opacity-70 hover:opacity-100">
+    <Image 
+      src="/logos-parceiros/cardapio.png" 
+      alt="Cardápio Web" 
+      width={200} 
+      height={60} 
+      className="object-contain h-full w-auto"
+    />
+  </div>
 );
 
 const GoogleAnalytics = () => (
-  <span className="text-2xl font-semibold text-muted-foreground hover:text-foreground transition-colors">
-    Google Analytics
-  </span>
+  <div className="h-[60px] flex items-center justify-center grayscale hover:grayscale-0 transition-all duration-300 opacity-70 hover:opacity-100">
+    <Image 
+      src="/logos-parceiros/google.png" 
+      alt="Google Analytics" 
+      width={200} 
+      height={60} 
+      className="object-contain h-full w-auto"
+    />
+  </div>
 );
 
 const WhatsApp = () => (
-  <span className="text-2xl font-semibold text-muted-foreground hover:text-foreground transition-colors">
-    WhatsApp
-  </span>
+  <div className="h-[60px] flex items-center justify-center grayscale hover:grayscale-0 transition-all duration-300 opacity-70 hover:opacity-100">
+    <Image 
+      src="/logos-parceiros/wpp.png" 
+      alt="WhatsApp" 
+      width={200} 
+      height={60} 
+      className="object-contain h-full w-auto"
+    />
+  </div>
 );
 
 const Evolution = () => (
-  <span className="text-2xl font-semibold text-muted-foreground hover:text-foreground transition-colors">
-    Evolution API
-  </span>
+  <div className="h-[60px] flex items-center justify-center grayscale hover:grayscale-0 transition-all duration-300 opacity-70 hover:opacity-100">
+    <Image 
+      src="/logos-parceiros/evolution.png" 
+      alt="Evolution API" 
+      width={200} 
+      height={60} 
+      className="object-contain h-full w-auto"
+    />
+  </div>
 );
 
 const Omnial = () => (
-  <span className="text-2xl font-semibold text-muted-foreground hover:text-foreground transition-colors">
-    Omnial
-  </span>
+  <div className="h-[60px] flex items-center justify-center grayscale hover:grayscale-0 transition-all duration-300 opacity-70 hover:opacity-100">
+    <Image 
+      src="/logos-parceiros/omnial.png" 
+      alt="Omnial" 
+      width={200} 
+      height={60} 
+      className="object-contain h-full w-auto"
+    />
+  </div>
 );
 
 const logos = [
@@ -84,22 +133,22 @@ export default function FeaturedIn() {
 
         {/* Infinite Slider */}
         <div className="relative h-[80px] w-full">
-          <InfiniteSlider className="flex h-full w-full items-center" duration={30} gap={96}>
+          <InfiniteSlider className="flex h-full w-full items-center" duration={30} gap={128}>
             {logos.map(({ id, component: Logo }) => (
-              <div key={id} className="flex-shrink-0 px-4">
+              <div key={id} className="flex-shrink-0 px-8">
                 <Logo />
               </div>
             ))}
           </InfiniteSlider>
           <ProgressiveBlur
-            className="pointer-events-none absolute top-0 left-0 h-full w-[200px]"
+            className="pointer-events-none absolute top-0 left-0 h-full w-[80px] md:w-[200px]"
             direction="left"
-            blurIntensity={1}
+            blurIntensity={0.5}
           />
           <ProgressiveBlur
-            className="pointer-events-none absolute top-0 right-0 h-full w-[200px]"
+            className="pointer-events-none absolute top-0 right-0 h-full w-[80px] md:w-[200px]"
             direction="right"
-            blurIntensity={1}
+            blurIntensity={0.5}
           />
         </div>
       </div>

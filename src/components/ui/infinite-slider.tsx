@@ -20,7 +20,7 @@ export function InfiniteSlider({
 }: InfiniteSliderProps) {
   return (
     <div
-      className={cn("group relative flex overflow-hidden", className)}
+      className={cn("group relative flex overflow-hidden gap-[var(--gap)]", className)}
       style={
         {
           "--duration": `${duration}s`,
@@ -30,7 +30,7 @@ export function InfiniteSlider({
     >
       <div
         className={cn(
-          "flex shrink-0 items-center justify-around gap-[var(--gap)]",
+          "flex shrink-0 items-center gap-[var(--gap)]",
           reverse ? "animate-infinite-slider-reverse" : "animate-infinite-slider"
         )}
       >
@@ -38,7 +38,7 @@ export function InfiniteSlider({
       </div>
       <div
         className={cn(
-          "flex shrink-0 items-center justify-around gap-[var(--gap)]",
+          "flex shrink-0 items-center gap-[var(--gap)]",
           reverse ? "animate-infinite-slider-reverse" : "animate-infinite-slider"
         )}
         aria-hidden="true"

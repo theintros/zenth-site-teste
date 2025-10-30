@@ -44,18 +44,21 @@ export default function HowItWorks() {
   return (
     <section className="relative py-2 bg-gradient-to-b from-transparent via-primary/5 to-transparent overflow-hidden">
       {/* Shooting Stars Background */}
-      <ShootingStars
-        minSpeed={15}
-        maxSpeed={25}
-        minDelay={800}
-        maxDelay={3000}
-        starColor="#06b6d4"
-        trailColor="#3b82f6"
-        starWidth={15}
-        starHeight={2}
-      />
+      <div className="absolute inset-0 pointer-events-none">
+        <ShootingStars
+          minSpeed={15}
+          maxSpeed={25}
+          minDelay={800}
+          maxDelay={3000}
+          starColor="#06b6d4"
+          trailColor="#3b82f6"
+          starWidth={15}
+          starHeight={2}
+          className="z-0"
+        />
+      </div>
       
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -82,9 +85,9 @@ export default function HowItWorks() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: index * 0.1 }}
-                  className="relative"
+                  className="relative z-20"
                 >
-                  <div className="glass-card rounded-2xl p-8 h-full hover:border-primary/20 transition-all duration-300 group">
+                  <div className="glass-card rounded-2xl p-8 h-full hover:border-primary/20 transition-all duration-300 group relative z-20">
                     {/* Number Badge */}
                     <div className="absolute -top-4 -right-4 w-12 h-12 rounded-full bg-primary/10 border-2 border-primary/30 flex items-center justify-center backdrop-blur-sm">
                       <span className="text-primary font-bold">

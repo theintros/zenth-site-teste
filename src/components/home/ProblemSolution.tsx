@@ -10,15 +10,16 @@ export default function ProblemSolution() {
     <section className="relative overflow-hidden">
       <div className="relative py-10">
         <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
+          <div className="grid lg:grid-cols-2 gap-16 items-stretch">
           {/* Problem */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
+            className="h-full"
           >
-            <FrostedGlassCard className="p-8">
+            <FrostedGlassCard className="p-8 h-full flex flex-col">
               <div className="w-16 h-16 rounded-2xl bg-destructive/10 flex items-center justify-center mb-6">
                 <Warning size={32} weight="bold" className="text-destructive" />
               </div>
@@ -26,7 +27,7 @@ export default function ProblemSolution() {
               <p className="text-muted-foreground text-lg leading-relaxed mb-6">
                 A maioria das marcas luta com dados fragmentados, métricas pouco claras e campanhas que não entregam ROI. O marketing tradicional é trabalho de adivinhação—adivinhação cara.
               </p>
-              <ul className="space-y-3">
+              <ul className="space-y-3 mb-8">
                 {[
                   "Gastos desperdiçados em canais ineficazes",
                   "Falta de insights acionáveis dos dados",
@@ -48,8 +49,9 @@ export default function ProblemSolution() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
+            className="h-full"
           >
-            <FrostedGlassCard className="p-8">
+            <FrostedGlassCard className="p-8 h-full flex flex-col">
               <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mb-6">
                 <Lightbulb size={32} weight="bold" className="text-primary" />
               </div>
