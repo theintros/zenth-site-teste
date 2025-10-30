@@ -68,24 +68,21 @@ export function PremiumTestimonials() {
 
   const slideVariants = {
     enter: (direction: number) => ({
-      x: direction > 0 ? 1000 : -1000,
+      x: direction > 0 ? 100 : -100,
       opacity: 0,
-      scale: 0.8,
-      rotateY: direction > 0 ? 45 : -45
+      scale: 0.95,
     }),
     center: {
       zIndex: 1,
       x: 0,
       opacity: 1,
       scale: 1,
-      rotateY: 0
     },
     exit: (direction: number) => ({
       zIndex: 0,
-      x: direction < 0 ? 1000 : -1000,
+      x: direction < 0 ? 100 : -100,
       opacity: 0,
-      scale: 0.8,
-      rotateY: direction < 0 ? 45 : -45
+      scale: 0.95,
     })
   };
 
@@ -94,10 +91,6 @@ export function PremiumTestimonials() {
     visible: { 
       opacity: 1, 
       y: 0,
-      transition: { 
-        duration: 0.8, 
-        ease: [0.23, 0.86, 0.39, 0.96] 
-      }
     }
   };
 
@@ -124,68 +117,52 @@ export function PremiumTestimonials() {
 
   return (
     <section id="testimonials" className="relative py-32 bg-gradient-to-br from-background via-primary/5 to-background text-foreground overflow-hidden">
-      {/* Enhanced Background Effects */}
-      <div className="absolute inset-0">
-        <motion.div 
-          className="absolute inset-0 bg-gradient-to-br from-primary/[0.08] via-purple-500/[0.05] to-primary/[0.08]"
-          animate={{
-            backgroundPosition: ['0% 0%', '100% 100%', '0% 0%'],
-          }}
-          transition={{
-            duration: 25,
-            repeat: Infinity,
-            ease: "linear"
-          }}
-          style={{
-            backgroundSize: '400% 400%'
-          }}
-        />
+      {/* Optimized Background Effects */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/[0.08] via-purple-500/[0.05] to-primary/[0.08]" />
         
         <motion.div
-          className="absolute top-1/3 left-1/5 w-72 h-72 bg-primary/15 rounded-full blur-3xl"
+          className="absolute top-1/3 left-1/5 w-72 h-72 bg-primary/10 rounded-full blur-3xl"
           animate={{
-            x: [0, 150, 0],
-            y: [0, 80, 0],
-            scale: [1, 1.2, 1],
+            scale: [1, 1.1, 1],
+            opacity: [0.3, 0.5, 0.3],
           }}
           transition={{
-            duration: 20,
+            duration: 15,
             repeat: Infinity,
             ease: "easeInOut"
           }}
         />
         <motion.div
-          className="absolute bottom-1/3 right-1/5 w-80 h-80 bg-purple-400/15 rounded-full blur-3xl"
+          className="absolute bottom-1/3 right-1/5 w-80 h-80 bg-purple-400/10 rounded-full blur-3xl"
           animate={{
-            x: [0, -100, 0],
-            y: [0, -60, 0],
-            scale: [1, 1.3, 1],
+            scale: [1.1, 1, 1.1],
+            opacity: [0.4, 0.2, 0.4],
           }}
           transition={{
-            duration: 22,
+            duration: 18,
             repeat: Infinity,
             ease: "easeInOut"
           }}
         />
 
-        {[...Array(12)].map((_, i) => (
+        {[...Array(6)].map((_, i) => (
           <motion.div
             key={i}
-            className="absolute w-1 h-1 bg-primary/30 rounded-full"
+            className="absolute w-1 h-1 bg-primary/20 rounded-full"
             style={{
-              left: `${15 + (i * 7)}%`,
-              top: `${25 + (i * 5)}%`,
+              left: `${20 + (i * 12)}%`,
+              top: `${30 + (i * 8)}%`,
             }}
             animate={{
-              y: [0, -50, 0],
-              opacity: [0.2, 1, 0.2],
-              scale: [1, 2, 1],
+              y: [0, -30, 0],
+              opacity: [0.2, 0.6, 0.2],
             }}
             transition={{
-              duration: 3 + i * 0.5,
+              duration: 4 + i * 0.5,
               repeat: Infinity,
               ease: "easeInOut",
-              delay: i * 0.3,
+              delay: i * 0.5,
             }}
           />
         ))}
@@ -266,66 +243,32 @@ export function PremiumTestimonials() {
                 animate="center"
                 exit="exit"
                 transition={{
-                  x: { type: "spring", stiffness: 300, damping: 30 },
-                  opacity: { duration: 0.4 },
-                  scale: { duration: 0.4 },
-                  rotateY: { duration: 0.6 }
+                  x: { type: "spring", stiffness: 200, damping: 25 },
+                  opacity: { duration: 0.3 },
+                  scale: { duration: 0.3 },
                 }}
                 className="absolute inset-0"
+                style={{ willChange: 'transform, opacity' }}
               >
                 <div className="relative h-full glass-card rounded-3xl p-8 md:p-12 overflow-hidden group">
-                  <motion.div
-                    className="absolute inset-0 bg-gradient-to-br from-primary/[0.08] via-purple-500/[0.05] to-primary/[0.08] rounded-3xl"
-                    animate={{
-                      backgroundPosition: ['0% 0%', '100% 100%', '0% 0%'],
-                    }}
-                    transition={{
-                      duration: 15,
-                      repeat: Infinity,
-                      ease: "linear"
-                    }}
-                    style={{
-                      backgroundSize: '300% 300%'
-                    }}
-                  />
+                  <div className="absolute inset-0 bg-gradient-to-br from-primary/[0.08] via-purple-500/[0.05] to-primary/[0.08] rounded-3xl" />
 
-                  <motion.div
-                    className="absolute top-8 right-8 opacity-10"
-                    animate={{ rotate: [0, 10, 0] }}
-                    transition={{ duration: 4, repeat: Infinity }}
-                  >
+                  <div className="absolute top-8 right-8 opacity-10">
                     <Quote className="w-16 h-16 text-foreground" />
-                  </motion.div>
+                  </div>
 
                   <div className="relative z-10 h-full flex flex-col md:flex-row items-center gap-8">
                     <div className="flex-shrink-0 text-center md:text-left">
-                      <motion.div
-                        className="relative mb-6"
-                        whileHover={{ scale: 1.1 }}
-                        transition={{ duration: 0.3 }}
-                      >
+                      <div className="relative mb-6">
                         <div className="w-24 h-24 mx-auto md:mx-0 rounded-full overflow-hidden border-4 border-primary/20 relative">
                           <img 
                             src={testimonials[currentIndex].avatar} 
                             alt={testimonials[currentIndex].name}
                             className="w-full h-full object-cover"
-                          />
-                          <motion.div
-                            className="absolute inset-0 bg-gradient-to-br from-primary/20 to-purple-400/20"
-                            animate={{ opacity: [0, 0.3, 0] }}
-                            transition={{ duration: 3, repeat: Infinity }}
+                            loading="lazy"
                           />
                         </div>
-                        
-                        <motion.div
-                          className="absolute inset-0 border-2 border-primary/30 rounded-full"
-                          animate={{ 
-                            scale: [1, 1.4, 1],
-                            opacity: [0.5, 0, 0.5]
-                          }}
-                          transition={{ duration: 2, repeat: Infinity }}
-                        />
-                      </motion.div>
+                      </div>
 
                       <h3 className="text-2xl font-bold text-foreground mb-2">
                         {testimonials[currentIndex].name}
@@ -339,42 +282,26 @@ export function PremiumTestimonials() {
                       
                       <div className="flex justify-center md:justify-start gap-1 mb-6">
                         {[...Array(testimonials[currentIndex].rating)].map((_, i) => (
-                          <motion.div
-                            key={i}
-                            initial={{ opacity: 0, scale: 0 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            transition={{ delay: i * 0.1, duration: 0.3 }}
-                          >
-                            <Star className="w-5 h-5 fill-yellow-400 text-yellow-400" />
-                          </motion.div>
+                          <Star key={i} className="w-5 h-5 fill-yellow-400 text-yellow-400" />
                         ))}
                       </div>
                     </div>
 
                     <div className="flex-1">
-                      <motion.blockquote 
-                        className="text-xl md:text-2xl text-foreground/90 leading-relaxed mb-8 font-light italic"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ delay: 0.3, duration: 0.8 }}
-                      >
+                      <blockquote className="text-xl md:text-2xl text-foreground/90 leading-relaxed mb-8 font-light italic">
                         "{testimonials[currentIndex].text}"
-                      </motion.blockquote>
+                      </blockquote>
 
                       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                         {testimonials[currentIndex].results.map((result, i) => (
-                          <motion.div
+                          <div
                             key={i}
                             className="glass-card rounded-lg p-3 backdrop-blur-sm"
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: 0.5 + i * 0.1, duration: 0.5 }}
-                            whileHover={{ scale: 1.05 }}
                           >
                             <span className="text-sm text-muted-foreground font-medium">
                               {result}
                             </span>
-                          </motion.div>
+                          </div>
                         ))}
                       </div>
                     </div>
@@ -439,15 +366,10 @@ export function PremiumTestimonials() {
               key={index}
               className="text-center group"
               variants={fadeInUp}
-              whileHover={{ scale: 1.05 }}
             >
-              <motion.div
-                className="text-3xl md:text-4xl font-bold gradient-text mb-2"
-                animate={{ opacity: [0.7, 1, 0.7] }}
-                transition={{ duration: 2, repeat: Infinity, delay: index * 0.5 }}
-              >
+              <div className="text-3xl md:text-4xl font-bold gradient-text mb-2">
                 {stat.number}
-              </motion.div>
+              </div>
               <div className="text-muted-foreground text-sm font-medium group-hover:text-foreground transition-colors">
                 {stat.label}
               </div>

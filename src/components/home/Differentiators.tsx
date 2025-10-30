@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Lightning, ShieldCheck, Users, Atom } from "phosphor-react";
+import { Sparkles } from "@/components/ui/sparkles";
 
 export default function Differentiators() {
   const differentiators = [
@@ -32,8 +33,23 @@ export default function Differentiators() {
   ];
 
   return (
-    <section className="relative py-32">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+    <section className="relative py-32 overflow-hidden">
+      {/* Sparkles Background */}
+      <div className="absolute inset-0 z-0">
+        <Sparkles
+          density={800}
+          speed={1.5}
+          color="#06b6d4"
+          className="absolute inset-0"
+          direction="top"
+          opacitySpeed={2}
+        />
+      </div>
+
+      {/* Curved Bottom Section for Sparkles */}
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent z-[1]" />
+
+      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -59,7 +75,7 @@ export default function Differentiators() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="text-center"
+                className="text-center relative z-20"
               >
                 <motion.div
                   whileHover={{ scale: 1.1, rotate: 5 }}

@@ -10,6 +10,7 @@ import {
   Sparkle,
 } from "phosphor-react";
 import GlassCard from "../GlassCard";
+import { ShootingStars } from "@/components/ui/shooting-stars";
 
 export default function CoreValues() {
   const values = [
@@ -52,8 +53,21 @@ export default function CoreValues() {
   ];
 
   return (
-    <section className="relative py-32 bg-gradient-to-b from-primary/5 via-transparent to-transparent">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+    <section className="relative py-32 bg-gradient-to-b from-primary/5 via-transparent to-transparent overflow-hidden">
+      {/* Shooting Stars Background */}
+      <div className="absolute inset-0 pointer-events-none z-0">
+        <ShootingStars 
+          className="z-0"
+          minSpeed={5}
+          maxSpeed={15}
+          minDelay={1500}
+          maxDelay={4000}
+          starColor="#06b6d4"
+          trailColor="#3b82f6"
+        />
+      </div>
+
+      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -73,7 +87,7 @@ export default function CoreValues() {
           {values.map((value, index) => {
             const Icon = value.icon;
             return (
-              <GlassCard key={index} delay={index * 0.1}>
+              <GlassCard key={index} delay={index * 0.1} className="relative z-20">
                 <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-6">
                   <Icon size={28} weight="bold" className="text-primary" />
                 </div>

@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Database, Strategy, Rocket, ChartBar } from "phosphor-react";
+import { Sparkles } from "@/components/ui/sparkles";
 
 export default function OurMethodology() {
   const phases = [
@@ -60,8 +61,23 @@ export default function OurMethodology() {
   ];
 
   return (
-    <section className="relative py-32">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+    <section className="relative py-32 overflow-hidden">
+      {/* Sparkles Background */}
+      <div className="absolute inset-0 z-0">
+        <Sparkles
+          density={800}
+          speed={1.5}
+          color="#06b6d4"
+          className="absolute inset-0"
+          direction="top"
+          opacitySpeed={2}
+        />
+      </div>
+
+      {/* Curved Bottom Section for Sparkles */}
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent z-[1]" />
+
+      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -88,7 +104,7 @@ export default function OurMethodology() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8 }}
-                className="glass-card rounded-3xl p-8 md:p-12 hover:border-primary/20 transition-all"
+                className="relative z-20 glass-card rounded-3xl p-8 md:p-12 hover:border-primary/20 transition-all"
               >
                 <div className="grid lg:grid-cols-2 gap-8 items-center">
                   <div className={isEven ? "order-1" : "order-1 lg:order-2"}>

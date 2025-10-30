@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Sparkle } from "phosphor-react";
 import { BorderTrail } from "@/components/ui/border-trail";
 
 export default function MissionStatement() {
@@ -83,14 +82,8 @@ export default function MissionStatement() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="inline-flex items-center space-x-2 mb-8"
+              className="mb-8"
             >
-              <motion.div
-                animate={{ rotate: [0, 360] }}
-                transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
-              >
-                <Sparkle size={32} weight="fill" className="text-primary" />
-              </motion.div>
               <span className="text-sm uppercase tracking-wider text-muted-foreground font-semibold">
                 Nossa Missão
               </span>
