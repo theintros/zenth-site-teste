@@ -106,7 +106,6 @@ const logos = [
   { id: "google", component: GoogleAds },
   { id: "n8n", component: N8N },
   { id: "cardapio", component: CardapioWeb },
-  { id: "analytics", component: GoogleAnalytics },
   { id: "whatsapp", component: WhatsApp },
   { id: "evolution", component: Evolution },
   { id: "omnial", component: Omnial },

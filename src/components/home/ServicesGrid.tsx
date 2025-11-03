@@ -8,6 +8,9 @@ import {
   Brain,
   DeviceMobile,
   PenNib,
+  ChatCircle,
+  TrendUp,
+  ShoppingCart,
 } from "phosphor-react";
 import GlassCard from "../GlassCard";
 
@@ -54,6 +57,27 @@ export default function ServicesGrid() {
       description:
         "Conteúdo envolvente que converte. De copywriting a design, criamos mensagens que movem pessoas à ação.",
       features: ["Copywriting", "Design", "Produção de Vídeo"],
+    },
+    {
+      icon: ChatCircle,
+      title: "Chatbots e Automações com IA",
+      description:
+        "Inteligência artificial que trabalha 24/7 para seu negócio. Chatbots inteligentes, automações conversacionais e atendimento automatizado que convertem leads em clientes.",
+      features: ["Chatbots WhatsApp/Telegram", "IA Generativa", "Automação Conversacional"],
+    },
+    {
+      icon: TrendUp,
+      title: "Gestão de Tráfego Pago",
+      description:
+        "Maximize seu investimento em Meta Ads e Google Ads com gestão profissional. Campanhas otimizadas, públicos segmentados e gestão de orçamento que entregam ROI comprovado.",
+      features: ["Meta Ads (Facebook/Instagram)", "Google Ads", "Otimização Contínua"],
+    },
+    {
+      icon: ShoppingCart,
+      title: "E-commerce & Conversão",
+      description:
+        "Transforme visitantes em clientes. Otimização de lojas online, funil de vendas, checkout inteligente e estratégias de conversão que aumentam suas vendas de forma mensurável.",
+      features: ["Otimização de Loja Online", "Funil de Vendas", "Checkout Inteligente"],
     },
   ];
 

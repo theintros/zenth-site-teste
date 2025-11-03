@@ -34,7 +34,7 @@ export default function Footer() {
     { icon: LinkedinLogo, href: "https://linkedin.com", label: "LinkedIn" },
     { icon: TwitterLogo, href: "https://twitter.com", label: "Twitter" },
     { icon: InstagramLogo, href: "https://instagram.com", label: "Instagram" },
-    { icon: EnvelopeSimple, href: "mailto:contato@zenth.com.br", label: "Email" },
+    { icon: EnvelopeSimple, href: "mailto:contato@zenthmarketing.com", label: "Email" },
   ];
 
   return (

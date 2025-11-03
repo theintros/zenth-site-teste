@@ -2,7 +2,6 @@
 
 import { motion } from "framer-motion";
 import {
-  MapPin,
   Envelope,
   Phone,
   Clock,
@@ -15,19 +14,14 @@ import GlassCard from "../GlassCard";
 export default function ContactInfo() {
   const contactDetails = [
     {
-      icon: MapPin,
-      title: "Localização do Escritório",
-      content: "Rua da Inovação 123, Distrito Tech\nSão Paulo, SP 01234-567",
-    },
-    {
       icon: Envelope,
       title: "E-mail",
-      content: "contato@zenth.com.br\nsuporte@zenth.com.br",
+      content: "contato@zenthmarketing.com",
     },
     {
       icon: Phone,
       title: "Telefone",
-      content: "+55 (11) 1234-5678\n+55 (11) 9876-5432",
+      content: "(17) 99284-1484",
     },
     {
       icon: Clock,

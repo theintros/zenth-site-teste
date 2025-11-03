@@ -71,9 +71,9 @@ export const metadata: Metadata = {
     },
   },
   icons: {
-    icon: "/icon.svg",
-    shortcut: "/icon.svg",
-    apple: "/icon.svg",
+    icon: "/icon.png",
+    shortcut: "/icon.png",
+    apple: "/icon.png",
   },
   manifest: "/manifest.json",
   alternates: {
@@ -104,10 +104,6 @@ export default function RootLayout({
               "url": "https://zenth.com.br",
               "logo": "https://zenth.com.br/logo-zenth.png",
               "description": "Agência de marketing digital especializada em estratégias data-driven para maximizar ROI",
-              "address": {
-                "@type": "PostalAddress",
-                "addressCountry": "BR"
-              },
               "sameAs": [
                 "https://www.linkedin.com/company/zenth",
                 "https://www.instagram.com/zenth",

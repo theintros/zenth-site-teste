@@ -142,7 +142,7 @@ export default function ContactForm() {
                 {...register("phone")}
                 type="tel"
                 className="w-full px-4 py-3 glass-card rounded-lg bg-secondary/50 border focus:border-primary/50 focus:outline-none transition-colors"
-                placeholder="+55 (11) 99999-9999"
+                placeholder="(17) 99284-1484"
               />
             </div>
           </div>

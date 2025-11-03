@@ -194,52 +194,14 @@ export default function HeroSection() {
             </div>
           </div>
 
-          {/* Right Image - order 4 on mobile (between description and buttons) */}
+          {/* Right Image - Desktop Only */}
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-            className="relative order-4 lg:order-2 translate-x-2 lg:translate-x-6"
+            className="relative hidden lg:block lg:order-2 translate-x-6"
           >
-            <div className="relative w-full h-[350px] sm:h-[450px] lg:h-[600px]">
-              {/* Particle System - Mobile */}
-              <div className="lg:hidden">
-                {particles.map((particle, i) => (
-                  <motion.div
-                    key={i}
-                    className="absolute rounded-full bg-cyan-400"
-                    style={{
-                      width: particle.size,
-                      height: particle.size,
-                      left: '50%',
-                      top: '50%',
-                      x: Math.cos(particle.angle) * particle.radius * 0.45,
-                      y: Math.sin(particle.angle) * particle.radius * 0.45,
-                    }}
-                    animate={{
-                      opacity: [0.3, 0.8, 0.3],
-                      scale: [1, 1.5, 1],
-                      x: [
-                        Math.cos(particle.angle) * particle.radius * 0.45,
-                        Math.cos(particle.angle + 0.5) * (particle.radius * 0.45 + 15),
-                        Math.cos(particle.angle) * particle.radius * 0.45,
-                      ],
-                      y: [
-                        Math.sin(particle.angle) * particle.radius * 0.45,
-                        Math.sin(particle.angle + 0.5) * (particle.radius * 0.45 + 15),
-                        Math.sin(particle.angle) * particle.radius * 0.45,
-                      ],
-                    }}
-                    transition={{
-                      duration: particle.duration,
-                      repeat: Infinity,
-                      ease: "easeInOut",
-                      delay: particle.delay,
-                    }}
-                  />
-                ))}
-              </div>
-
+            <div className="relative w-full h-[600px]">
               {/* Particle System - Desktop */}
               <div className="hidden lg:block">
                 {particles.map((particle, i) => (
