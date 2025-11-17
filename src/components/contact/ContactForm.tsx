@@ -33,8 +33,8 @@ export default function ContactForm() {
 
   const onSubmit = async (data: FormData) => {
     try {
-      // Prepare form data for Netlify
-      const formPayload: Record<string, string> = {
+      // Prepare form payload
+      const payload: Record<string, string> = {
         "form-name": "contact",
         name: data.name,
         email: data.email,
@@ -44,19 +44,22 @@ export default function ContactForm() {
         message: data.message,
       };
 
-      // Add phone if provided
       if (data.phone) {
-        formPayload.phone = data.phone;
+        payload.phone = data.phone;
       }
 
-      // Submit to Netlify
-      const response = await fetch("/", {
+      // Submit via API route
+      const response = await fetch("/api/contact", {
         method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: new URLSearchParams(formPayload).toString(),
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload),
       });
 
-      if (response.ok) {
+      const result = await response.json();
+
+      if (result.success) {
         setIsSubmitted(true);
         reset();
         setTimeout(() => setIsSubmitted(false), 5000);
@@ -117,16 +120,9 @@ export default function ContactForm() {
       ) : (
         <form
           name="contact"
-          method="POST"
-          data-netlify="true"
-          data-netlify-honeypot="bot-field"
           onSubmit={handleSubmit(onSubmit)}
           className="space-y-6"
         >
-          {/* Hidden field for Netlify form detection */}
-          <input type="hidden" name="form-name" value="contact" />
-          {/* Honeypot field for spam protection */}
-          <input type="hidden" name="bot-field" />
           <div className="grid md:grid-cols-2 gap-6">
             <div>
               <label className="block text-sm font-medium mb-2">
