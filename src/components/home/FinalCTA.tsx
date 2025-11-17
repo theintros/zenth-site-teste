@@ -30,41 +30,37 @@ export default function FinalCTA() {
 
   const onSubmit = async (data: FormData) => {
     try {
-      // Prepare form data as URLSearchParams for Netlify Forms
-      const params = new URLSearchParams();
-      params.append("form-name", "cta-contact");
-      params.append("name", data.name);
-      params.append("email", data.email);
-      params.append("company", data.company);
-      params.append("message", data.message);
+      // Prepare form payload
+      const payload: Record<string, string> = {
+        "form-name": "cta-contact",
+        name: data.name,
+        email: data.email,
+        company: data.company,
+        message: data.message,
+      };
 
-      // Submit directly to Netlify Forms endpoint
-      const response = await fetch("/", {
+      // Submit via API route which handles Netlify Forms submission
+      const response = await fetch("/api/submit-form", {
         method: "POST",
         headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
+          "Content-Type": "application/json",
         },
-        body: params.toString(),
+        body: JSON.stringify(payload),
       });
 
-      // Netlify Forms returns 200 on success or may redirect
-      if (response.ok || response.status === 200) {
+      const result = await response.json();
+
+      if (result.success) {
         setIsSubmitted(true);
         reset();
         setTimeout(() => setIsSubmitted(false), 3000);
       } else {
-        // Log error but still show success (Netlify might process it anyway)
-        console.error("Form submission response:", response.status, response.statusText);
-        setIsSubmitted(true);
-        reset();
-        setTimeout(() => setIsSubmitted(false), 3000);
+        console.error("Form submission error:", result);
+        alert("Erro ao enviar formulário. Por favor, tente novamente.");
       }
     } catch (error) {
       console.error("Erro ao enviar formulário:", error);
-      // Show success anyway - Netlify might still process it
-      setIsSubmitted(true);
-      reset();
-      setTimeout(() => setIsSubmitted(false), 3000);
+      alert("Erro ao enviar formulário. Por favor, tente novamente.");
     }
   };
 
