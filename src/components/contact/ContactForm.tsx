@@ -33,43 +33,40 @@ export default function ContactForm() {
 
   const onSubmit = async (data: FormData) => {
     try {
-      // Prepare form data as URLSearchParams for Netlify Forms
-      const params = new URLSearchParams();
-      params.append('form-name', 'contact');
-      params.append('name', data.name);
-      params.append('email', data.email);
-      params.append('company', data.company);
-      params.append('service', data.service);
-      params.append('budget', data.budget);
-      params.append('message', data.message);
+      // Create FormData object for submission
+      const formData = new FormData();
+      formData.append('form-name', 'contact');
+      formData.append('name', data.name);
+      formData.append('email', data.email);
+      formData.append('company', data.company);
+      formData.append('service', data.service);
+      formData.append('budget', data.budget);
+      formData.append('message', data.message);
       
       if (data.phone) {
-        params.append('phone', data.phone);
+        formData.append('phone', data.phone);
       }
-      params.append('bot-field', '');
+      formData.append('bot-field', '');
 
-      // Submit directly to Netlify Forms using the full site URL
-      // This bypasses Next.js routing and goes directly to Netlify
-      const siteUrl = window.location.origin;
-      const response = await fetch(`${siteUrl}/`, {
+      // Submit via API route which handles Netlify Forms submission
+      const response = await fetch('/api/netlify-form', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
-        },
-        body: params.toString(),
+        body: formData,
       });
 
-      // Netlify Forms processes asynchronously
-      // Show success message regardless of response
-      setIsSubmitted(true);
-      reset();
-      setTimeout(() => setIsSubmitted(false), 5000);
+      const result = await response.json();
+
+      if (result.success) {
+        setIsSubmitted(true);
+        reset();
+        setTimeout(() => setIsSubmitted(false), 5000);
+      } else {
+        console.error("Form submission error:", result);
+        alert("Erro ao enviar formulário. Por favor, tente novamente.");
+      }
     } catch (error) {
       console.error("Erro ao enviar formulário:", error);
-      // Show success anyway - Netlify might still process it
-      setIsSubmitted(true);
-      reset();
-      setTimeout(() => setIsSubmitted(false), 5000);
+      alert("Erro ao enviar formulário. Por favor, tente novamente.");
     }
   };
 
