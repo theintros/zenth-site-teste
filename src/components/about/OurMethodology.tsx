@@ -11,7 +11,7 @@ export default function OurMethodology() {
       phase: "Fase 1",
       title: "Análise Profunda",
       description:
-        "Começamos entendendo seu negócio por dentro e por fora. Análise de mercado, pesquisa de concorrência, comportamento do cliente e dados históricos—não deixamos pedra sobre pedra.",
+        "Começamos entendendo seu negócio por dentro e por fora. Análise de mercado, pesquisa de concorrência, comportamento do cliente e dados históricos, não deixamos pedra sobre pedra.",
       details: [
         "Pesquisa abrangente de mercado",
         "Desenvolvimento de personas de cliente",

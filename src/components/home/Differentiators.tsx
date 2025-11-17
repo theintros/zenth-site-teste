@@ -16,13 +16,13 @@ export default function Differentiators() {
       icon: ShieldCheck,
       title: "Resultados Comprovados",
       description:
-        "98% de satisfação dos clientes, ROI médio de 3.5x e um histórico de transformação de marcas em diversos setores.",
+        "98% de satisfação dos clientes, ROI médio de 3.8x e um histórico de transformação de marcas em diversos setores.",
     },
     {
       icon: Users,
       title: "Parceria Estratégica",
       description:
-        "Não somos fornecedores—somos seus parceiros de crescimento. Seu sucesso é nosso sucesso, e estamos investidos em ambos.",
+        "Não somos fornecedores, somos seus parceiros de crescimento. Seu sucesso é nosso sucesso, e estamos investidos em ambos.",
     },
     {
       icon: Atom,

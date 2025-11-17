@@ -21,7 +21,7 @@ export default function FAQAccordion() {
     {
       question: "Com quais setores vocês trabalham?",
       answer:
-        "Trabalhamos com sucesso com marcas em mais de 15 setores, incluindo SaaS, e-commerce, fintech, saúde, serviços B2B e muito mais. Nossa abordagem orientada por dados é agnóstica ao setor—focamos em entender sua dinâmica de mercado única e comportamento do cliente.",
+        "Trabalhamos com sucesso com marcas em mais de 15 setores, incluindo SaaS, e-commerce, fintech, saúde, serviços B2B e muito mais. Nossa abordagem orientada por dados é agnóstica ao setor, focamos em entender sua dinâmica de mercado única e comportamento do cliente.",
     },
     {
       question: "Vocês exigem contratos de longo prazo?",

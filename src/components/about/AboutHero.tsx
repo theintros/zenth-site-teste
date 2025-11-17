@@ -73,7 +73,7 @@ export default function AboutHero() {
           transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
           className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-3xl mx-auto"
         >
-          Fundada por cientistas de dados e estrategistas de marketing cansados de agências que prometem demais e entregam de menos. Construímos a Zenth para ser diferente—transparente, focada em resultados e obcecada pelo seu sucesso.
+          Fundada por cientistas de dados e estrategistas de marketing cansados de agências que prometem demais e entregam de menos. Construímos a Zenth para ser diferente, transparente, focada em resultados e obcecada pelo seu sucesso.
         </motion.p>
       </div>
     </section>

@@ -14,7 +14,7 @@ const formSchema = z.object({
   company: z.string().min(2, "Nome da empresa é obrigatório"),
   phone: z.string().optional(),
   service: z.string().min(1, "Por favor, selecione um serviço"),
-  budget: z.string().min(1, "Por favor, selecione uma faixa de orçamento"),
+  budget: z.string().min(1, "Por favor, selecione a média de faturamento mensal"),
   message: z.string().min(10, "Mensagem deve ter no mínimo 10 caracteres"),
 });
 
@@ -40,21 +40,25 @@ export default function ContactForm() {
   };
 
   const services = [
-    "Análise de Dados",
-    "Marketing Digital",
-    "Posicionamento de Marca",
-    "Automação de Marketing",
-    "Performance Marketing",
+    "Gestão de Tráfego Pago",
     "Serviços Criativos",
+    "Posicionamento de Marca",
+    "Chatbots e Automações com IA",
+    "E-commerce & Conversão",
+    "Marketing Digital",
+    "Sites, Landing Pages e Sistemas",
+    "Análise de Dados",
+    "Automação de Marketing",
     "Outro",
   ];
 
-  const budgets = [
-    "Menos de R$ 5.000",
-    "R$ 5.000 - R$ 10.000",
-    "R$ 10.000 - R$ 25.000",
+  const monthlyRevenues = [
     "R$ 25.000 - R$ 50.000",
-    "R$ 50.000+",
+    "R$ 50.000 - R$ 100.000",
+    "R$ 100.000 - R$ 250.000",
+    "R$ 250.000 - R$ 500.000",
+    "R$ 500.000 - R$ 1.000.000",
+    "R$ 1.000.000+",
   ];
 
   return (
@@ -171,16 +175,16 @@ export default function ContactForm() {
 
           <div>
             <label className="block text-sm font-medium mb-2">
-              Faixa de Orçamento <span className="text-destructive">*</span>
+              Média de Faturamento Mensal <span className="text-destructive">*</span>
             </label>
             <select
               {...register("budget")}
               className="w-full px-4 py-3 glass-card rounded-lg bg-secondary/50 border focus:border-primary/50 focus:outline-none transition-colors"
             >
-              <option value="">Selecione seu orçamento</option>
-              {budgets.map((budget) => (
-                <option key={budget} value={budget}>
-                  {budget}
+              <option value="">Selecione a média de faturamento mensal</option>
+              {monthlyRevenues.map((revenue) => (
+                <option key={revenue} value={revenue}>
+                  {revenue}
                 </option>
               ))}
             </select>

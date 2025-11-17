@@ -132,9 +132,9 @@ export default function FeaturedIn() {
 
         {/* Infinite Slider */}
         <div className="relative h-[80px] w-full">
-          <InfiniteSlider className="flex h-full w-full items-center" duration={30} gap={128}>
+          <InfiniteSlider className="flex h-full w-full items-center" duration={30} gap={64}>
             {logos.map(({ id, component: Logo }) => (
-              <div key={id} className="flex-shrink-0 px-8">
+              <div key={id} className="flex-shrink-0 px-2 md:px-8">
                 <Logo />
               </div>
             ))}

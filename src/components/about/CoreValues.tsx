@@ -18,7 +18,7 @@ export default function CoreValues() {
       icon: ChartLineUp,
       title: "Mentalidade Data-First",
       description:
-        "Cada decisão que tomamos é respaldada por dados. Não fazemos suposições—analisamos, testamos e otimizamos com base em métricas reais.",
+        "Cada decisão que tomamos é respaldada por dados. Não fazemos suposições: analisamos, testamos e otimizamos com base em métricas reais.",
     },
     {
       icon: Handshake,
@@ -36,19 +36,19 @@ export default function CoreValues() {
       icon: Target,
       title: "Obsessão por Resultados",
       description:
-        "Não nos satisfazemos com 'bom o suficiente'. Otimizamos continuamente até atingir—e superar—seus objetivos.",
+        "Não nos satisfazemos com 'bom o suficiente'. Otimizamos continuamente até atingir, e superar seus objetivos.",
     },
     {
       icon: Users,
       title: "Mentalidade de Parceria",
       description:
-        "Seu sucesso é nosso sucesso. Não somos fornecedores—somos parceiros estratégicos investidos no seu crescimento de longo prazo.",
+        "Seu sucesso é nosso sucesso. Não somos fornecedores, somos parceiros estratégicos investidos no seu crescimento de longo prazo. Afinal, se não trouxermos retorno, não temos retorno.",
     },
     {
       icon: Sparkle,
       title: "Excelência Sempre",
       description:
-        "Da estratégia à execução, mantemos os mais altos padrões. Qualidade não é negociável—é nossa base.",
+        "Da estratégia à execução, mantemos os mais altos padrões. Qualidade não é negociável, é nossa base.",
     },
   ];
 

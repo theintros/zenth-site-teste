@@ -6,7 +6,7 @@ import {
   MegaphoneSimple,
   Target,
   Brain,
-  DeviceMobile,
+  Globe,
   PenNib,
   ChatCircle,
   TrendUp,
@@ -17,39 +17,11 @@ import GlassCard from "../GlassCard";
 export default function ServicesGrid() {
   const services = [
     {
-      icon: ChartBar,
-      title: "Análise de Dados",
+      icon: TrendUp,
+      title: "Gestão de Tráfego Pago",
       description:
-        "Transforme dados brutos em insights acionáveis. Análises avançadas, modelagem preditiva e dashboards personalizados.",
-      features: ["Relatórios em Tempo Real", "Análise Preditiva", "KPIs Personalizados"],
-    },
-    {
-      icon: MegaphoneSimple,
-      title: "Marketing Digital",
-      description:
-        "Campanhas multicanal que geram resultados. SEO, SEM, mídias sociais e marketing de conteúdo otimizados para ROI.",
-      features: ["SEO & SEM", "Mídias Sociais", "Estratégia de Conteúdo"],
-    },
-    {
-      icon: Target,
-      title: "Posicionamento de Marca",
-      description:
-        "Destaque-se em mercados lotados. Posicionamento estratégico que ressoa com seu público e diferencia sua marca.",
-      features: ["Pesquisa de Mercado", "Análise Competitiva", "Estratégia de Marca"],
-    },
-    {
-      icon: Brain,
-      title: "Automação de Marketing",
-      description:
-        "Escale seus esforços com automação inteligente. Nutrição de leads, campanhas de e-mail e otimização de fluxo de trabalho.",
-      features: ["E-mail Marketing", "Pontuação de Leads", "Integração CRM"],
-    },
-    {
-      icon: DeviceMobile,
-      title: "Marketing de Performance",
-      description:
-        "Pague por resultados, não por promessas. Campanhas baseadas em desempenho com rastreamento transparente de ROI e otimização.",
-      features: ["Gestão de PPC", "Otimização de Conversão", "Testes A/B"],
+        "Maximize seu investimento em Meta Ads e Google Ads com gestão profissional. Campanhas otimizadas, públicos segmentados e gestão de orçamento que entregam ROI comprovado.",
+      features: ["Meta Ads (Facebook/Instagram)", "Google Ads", "Otimização Contínua"],
     },
     {
       icon: PenNib,
@@ -59,6 +31,13 @@ export default function ServicesGrid() {
       features: ["Copywriting", "Design", "Produção de Vídeo"],
     },
     {
+      icon: Target,
+      title: "Posicionamento de Marca",
+      description:
+        "Destaque-se em mercados lotados. Posicionamento estratégico que ressoa com seu público e diferencia sua marca.",
+      features: ["Pesquisa de Mercado", "Análise Competitiva", "Estratégia de Marca"],
+    },
+    {
       icon: ChatCircle,
       title: "Chatbots e Automações com IA",
       description:
@@ -66,18 +45,39 @@ export default function ServicesGrid() {
       features: ["Chatbots WhatsApp/Telegram", "IA Generativa", "Automação Conversacional"],
     },
     {
-      icon: TrendUp,
-      title: "Gestão de Tráfego Pago",
-      description:
-        "Maximize seu investimento em Meta Ads e Google Ads com gestão profissional. Campanhas otimizadas, públicos segmentados e gestão de orçamento que entregam ROI comprovado.",
-      features: ["Meta Ads (Facebook/Instagram)", "Google Ads", "Otimização Contínua"],
-    },
-    {
       icon: ShoppingCart,
       title: "E-commerce & Conversão",
       description:
         "Transforme visitantes em clientes. Otimização de lojas online, funil de vendas, checkout inteligente e estratégias de conversão que aumentam suas vendas de forma mensurável.",
       features: ["Otimização de Loja Online", "Funil de Vendas", "Checkout Inteligente"],
+    },
+    {
+      icon: MegaphoneSimple,
+      title: "Marketing Digital",
+      description:
+        "Campanhas multicanal que geram resultados. SEO, SEM, mídias sociais e marketing de conteúdo otimizados para ROI.",
+      features: ["SEO & SEM", "Mídias Sociais", "Estratégia de Conteúdo"],
+    },
+    {
+      icon: Globe,
+      title: "Sites, Landing Pages e Sistemas",
+      description:
+        "Desenvolvimento completo de presença digital. Criamos sites institucionais, landing pages de alta conversão e sistemas personalizados como agendamentos online e CRMs simplificados para controle interno do seu negócio.",
+      features: ["Sites Institucionais", "Landing Pages", "Sistemas Personalizados"],
+    },
+    {
+      icon: ChartBar,
+      title: "Análise de Dados",
+      description:
+        "Transforme dados brutos em insights acionáveis. Análises avançadas, modelagem preditiva e dashboards personalizados.",
+      features: ["Relatórios em Tempo Real", "Análise Preditiva", "KPIs Personalizados"],
+    },
+    {
+      icon: Brain,
+      title: "Automação de Marketing",
+      description:
+        "Escale seus esforços com automação inteligente. Nutrição de leads, campanhas de e-mail e otimização de fluxo de trabalho.",
+      features: ["E-mail Marketing", "Pontuação de Leads", "Integração CRM"],
     },
   ];
 

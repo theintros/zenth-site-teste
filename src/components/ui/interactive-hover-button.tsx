@@ -22,7 +22,7 @@ const InteractiveHoverButton = React.forwardRef<
       {...props}
     >
       {/* Animated background blob - behind everything */}
-      <div className="absolute left-[16%] top-[43%] h-2 w-2 scale-[1] rounded-full bg-white/80 transition-all duration-300 group-hover:left-[0%] group-hover:top-[0%] group-hover:h-full group-hover:w-full group-hover:scale-[1.8] group-hover:bg-gradient-to-r group-hover:from-blue-500 group-hover:to-purple-600 z-0"></div>
+      <div className="absolute left-[16%] top-[43%] h-2 w-2 scale-[1] rounded-full bg-white/80 transition-all duration-300 group-hover:left-[0%] group-hover:top-[0%] group-hover:h-full group-hover:w-full group-hover:scale-[1.8] group-hover:bg-gradient-to-r group-hover:from-cyan-500 group-hover:to-blue-600 z-0"></div>
       
       {/* Initial text - visible by default */}
       <span className="relative z-10 inline-block transition-all duration-300 group-hover:translate-x-3 group-hover:opacity-0 translate-x-1">

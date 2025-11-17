@@ -109,7 +109,7 @@ export default function MissionStatement() {
               transition={{ duration: 0.6, delay: 0.4 }}
               className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-3xl mx-auto"
             >
-              Capacitamos marcas ambiciosas a alcançar seu máximo potencial transformando dados em estratégia, estratégia em ação e ação em crescimento exponencial. Sem enrolação, sem métricas de vaidade—apenas resultados reais que impactam seu resultado final.
+              Capacitamos marcas ambiciosas a alcançar seu máximo potencial transformando dados em estratégia, estratégia em ação e ação em crescimento exponencial. Sem enrolação, sem métricas de vaidade, apenas resultados reais que impactam seu resultado final.
             </motion.p>
           </div>
         </motion.div>

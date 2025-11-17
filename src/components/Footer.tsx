@@ -3,10 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import {
-  LinkedinLogo,
-  TwitterLogo,
-  InstagramLogo,
-  EnvelopeSimple,
+  WhatsappLogo,
 } from "phosphor-react";
 
 export default function Footer() {
@@ -30,12 +27,6 @@ export default function Footer() {
     ],
   };
 
-  const socialLinks = [
-    { icon: LinkedinLogo, href: "https://linkedin.com", label: "LinkedIn" },
-    { icon: TwitterLogo, href: "https://twitter.com", label: "Twitter" },
-    { icon: InstagramLogo, href: "https://instagram.com", label: "Instagram" },
-    { icon: EnvelopeSimple, href: "mailto:contato@zenthmarketing.com", label: "Email" },
-  ];
 
   return (
     <footer className="relative border-t border-border bg-card/30">
@@ -56,21 +47,15 @@ export default function Footer() {
               Assessoria de marketing data-driven que entrega ROI real para marcas ambiciosas através de insights estratégicos e soluções inovadoras.
             </p>
             <div className="flex space-x-4">
-              {socialLinks.map((social) => {
-                const Icon = social.icon;
-                return (
-                  <a
-                    key={social.label}
-                    href={social.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-10 h-10 rounded-full glass-card flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary/20 transition-all"
-                    aria-label={social.label}
-                  >
-                    <Icon size={20} weight="bold" />
-                  </a>
-                );
-              })}
+              <a
+                href="https://wa.me/5517992841484"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 rounded-full glass-card flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary/20 transition-all"
+                aria-label="WhatsApp"
+              >
+                <WhatsappLogo size={20} weight="bold" />
+              </a>
             </div>
           </div>
 

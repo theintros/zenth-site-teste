@@ -20,13 +20,13 @@ export default function OurStory() {
             </h2>
             <div className="space-y-6 text-muted-foreground leading-relaxed text-lg">
               <p>
-                A Zenth nasceu da frustração. Nossos fundadores passaram anos observando agências tradicionais de marketing queimarem o orçamento de clientes com pouco resultado. As campanhas não tinham estratégia, dados eram ignorados e os resultados estavam sempre "logo ali".
+                A Zenth nasceu da frustração. Passamos anos observando agências e assessorias tradicionais de marketing queimarem o orçamento de clientes com pouco resultado. As campanhas não tinham estratégia, dados eram ignorados e os resultados estavam sempre "logo ali", além de prometerem muito mais do que conseguiriam entregar.
               </p>
               <p>
-                Em 2018, decidimos construir a agência que gostaríamos que existisse. Uma que combinasse análise rigorosa de dados com execução criativa de marketing. Uma que medisse sucesso pelo ROI do cliente, não por métricas de vaidade. Uma que tratasse cada real investido como se fosse nosso.
+                Em 2024, decidimos construir a assessoria que gostaríamos que existisse. Uma que combinasse análise rigorosa de dados com execução criativa de marketing. Uma que medisse sucesso pelo ROI do cliente, não por métricas de vaidade. Uma que tratasse cada real investido como se fosse nosso.
               </p>
               <p>
-                Hoje, a Zenth cresceu para uma equipe de mais de 40 cientistas de dados, estrategistas e criativos. Já ajudamos mais de 250 marcas em 15+ setores a alcançar em média 3,5x de ROI. Mas nossa missão permanece a mesma: transformar dados em crescimento, e crescimento em sucesso duradouro.
+                Hoje, a Zenth cresceu para uma equipe de mais de 20 cientistas de dados, estrategistas e criativos. Já ajudamos mais de 70 marcas em 15+ setores a alcançar em média 3,8x de ROI. Mas nossa missão permanece a mesma: transformar dados em crescimento, e crescimento em sucesso duradouro.
               </p>
             </div>
           </motion.div>
@@ -40,9 +40,9 @@ export default function OurStory() {
             className="grid grid-cols-2 gap-6"
           >
             {[
-              { value: "2018", label: "Fundada" },
-              { value: "40+", label: "Membros da Equipe" },
-              { value: "250+", label: "Marcas Atendidas" },
+              { value: "2024", label: "Fundada" },
+              { value: "10+", label: "Membros da Equipe" },
+              { value: "70+", label: "Marcas Atendidas" },
               { value: "15+", label: "Setores" },
             ].map((stat, index) => (
               <GlassCard

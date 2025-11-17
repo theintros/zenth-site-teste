@@ -5,9 +5,6 @@ import {
   Envelope,
   Phone,
   Clock,
-  LinkedinLogo,
-  TwitterLogo,
-  InstagramLogo,
 } from "phosphor-react";
 import GlassCard from "../GlassCard";
 
@@ -28,12 +25,6 @@ export default function ContactInfo() {
       title: "Horário de Atendimento",
       content: "Segunda - Sexta: 9h - 18h BRT\nFins de semana: Mediante agendamento",
     },
-  ];
-
-  const socialLinks = [
-    { icon: LinkedinLogo, href: "https://linkedin.com", label: "LinkedIn" },
-    { icon: TwitterLogo, href: "https://twitter.com", label: "Twitter" },
-    { icon: InstagramLogo, href: "https://instagram.com", label: "Instagram" },
   ];
 
   return (
@@ -66,29 +57,6 @@ export default function ContactInfo() {
                   </p>
                 </div>
               </motion.div>
-            );
-          })}
-        </div>
-      </GlassCard>
-
-      <GlassCard>
-        <h3 className="text-xl font-bold mb-6">Conecte-se Conosco</h3>
-        <div className="flex space-x-4">
-          {socialLinks.map((social, index) => {
-            const Icon = social.icon;
-            return (
-              <motion.a
-                key={index}
-                href={social.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.95 }}
-                className="w-12 h-12 rounded-2xl glass-card flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary/20 hover:shadow-lg hover:shadow-primary/10 transition-all"
-                aria-label={social.label}
-              >
-                <Icon size={24} weight="bold" />
-              </motion.a>
             );
           })}
         </div>
