@@ -32,11 +32,41 @@ export default function ContactForm() {
   });
 
   const onSubmit = async (data: FormData) => {
-    await new Promise((resolve) => setTimeout(resolve, 1500));
-    console.log(data);
-    setIsSubmitted(true);
-    reset();
-    setTimeout(() => setIsSubmitted(false), 5000);
+    try {
+      // Prepare form data for Netlify
+      const formPayload: Record<string, string> = {
+        "form-name": "contact",
+        name: data.name,
+        email: data.email,
+        company: data.company,
+        service: data.service,
+        budget: data.budget,
+        message: data.message,
+      };
+
+      // Add phone if provided
+      if (data.phone) {
+        formPayload.phone = data.phone;
+      }
+
+      // Submit to Netlify
+      const response = await fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams(formPayload).toString(),
+      });
+
+      if (response.ok) {
+        setIsSubmitted(true);
+        reset();
+        setTimeout(() => setIsSubmitted(false), 5000);
+      } else {
+        throw new Error("Erro ao enviar formulário");
+      }
+    } catch (error) {
+      console.error("Erro ao enviar formulário:", error);
+      alert("Erro ao enviar formulário. Por favor, tente novamente.");
+    }
   };
 
   const services = [
@@ -85,7 +115,18 @@ export default function ContactForm() {
           </p>
         </motion.div>
       ) : (
-        <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+        <form
+          name="contact"
+          method="POST"
+          data-netlify="true"
+          data-netlify-honeypot="bot-field"
+          onSubmit={handleSubmit(onSubmit)}
+          className="space-y-6"
+        >
+          {/* Hidden field for Netlify form detection */}
+          <input type="hidden" name="form-name" value="contact" />
+          {/* Honeypot field for spam protection */}
+          <input type="hidden" name="bot-field" />
           <div className="grid md:grid-cols-2 gap-6">
             <div>
               <label className="block text-sm font-medium mb-2">
@@ -93,6 +134,7 @@ export default function ContactForm() {
               </label>
               <input
                 {...register("name")}
+                name="name"
                 type="text"
                 className="w-full px-4 py-3 glass-card rounded-lg bg-secondary/50 border focus:border-primary/50 focus:outline-none transition-colors"
                 placeholder="João Silva"
@@ -110,6 +152,7 @@ export default function ContactForm() {
               </label>
               <input
                 {...register("email")}
+                name="email"
                 type="email"
                 className="w-full px-4 py-3 glass-card rounded-lg bg-secondary/50 border focus:border-primary/50 focus:outline-none transition-colors"
                 placeholder="joao@empresa.com"
@@ -129,6 +172,7 @@ export default function ContactForm() {
               </label>
               <input
                 {...register("company")}
+                name="company"
                 type="text"
                 className="w-full px-4 py-3 glass-card rounded-lg bg-secondary/50 border focus:border-primary/50 focus:outline-none transition-colors"
                 placeholder="Empresa Inc."
@@ -144,6 +188,7 @@ export default function ContactForm() {
               <label className="block text-sm font-medium mb-2">Telefone</label>
               <input
                 {...register("phone")}
+                name="phone"
                 type="tel"
                 className="w-full px-4 py-3 glass-card rounded-lg bg-secondary/50 border focus:border-primary/50 focus:outline-none transition-colors"
                 placeholder="(17) 99284-1484"
@@ -157,6 +202,7 @@ export default function ContactForm() {
             </label>
             <select
               {...register("service")}
+              name="service"
               className="w-full px-4 py-3 glass-card rounded-lg bg-secondary/50 border focus:border-primary/50 focus:outline-none transition-colors"
             >
               <option value="">Selecione um serviço</option>
@@ -179,6 +225,7 @@ export default function ContactForm() {
             </label>
             <select
               {...register("budget")}
+              name="budget"
               className="w-full px-4 py-3 glass-card rounded-lg bg-secondary/50 border focus:border-primary/50 focus:outline-none transition-colors"
             >
               <option value="">Selecione a média de faturamento mensal</option>
@@ -201,6 +248,7 @@ export default function ContactForm() {
             </label>
             <textarea
               {...register("message")}
+              name="message"
               rows={5}
               className="w-full px-4 py-3 glass-card rounded-lg bg-secondary/50 border focus:border-primary/50 focus:outline-none transition-colors resize-none"
               placeholder="Conte-nos sobre seu projeto..."
