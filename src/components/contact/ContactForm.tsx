@@ -33,8 +33,8 @@ export default function ContactForm() {
 
   const onSubmit = async (data: FormData) => {
     try {
-      // Prepare form data for Netlify Forms
-      const formPayload: Record<string, string> = {
+      // Prepare form payload
+      const payload: Record<string, string> = {
         "form-name": "contact",
         name: data.name,
         email: data.email,
@@ -45,17 +45,21 @@ export default function ContactForm() {
       };
 
       if (data.phone) {
-        formPayload.phone = data.phone;
+        payload.phone = data.phone;
       }
 
-      // Submit directly to Netlify Forms
-      const response = await fetch("/", {
+      // Submit via API route (server-side submission to Netlify Forms)
+      const response = await fetch("/api/contact", {
         method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: new URLSearchParams(formPayload).toString(),
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload),
       });
 
-      if (response.ok) {
+      const result = await response.json();
+
+      if (result.success) {
         setIsSubmitted(true);
         reset();
         setTimeout(() => setIsSubmitted(false), 5000);
