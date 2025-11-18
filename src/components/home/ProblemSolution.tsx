@@ -25,7 +25,7 @@ export default function ProblemSolution() {
               </div>
               <h3 className="text-3xl font-bold mb-4">O Desafio</h3>
               <p className="text-muted-foreground text-lg leading-relaxed mb-6">
-                A maioria das marcas luta com dados fragmentados, métricas pouco claras e campanhas que não entregam ROI. O marketing tradicional é trabalho de adivinhação—adivinhação cara.
+                A maioria das marcas luta com dados fragmentados, métricas pouco claras e campanhas que não entregam ROI. O marketing tradicional é trabalho de adivinhação, adivinhação cara.
               </p>
               <ul className="space-y-3 mb-8">
                 {[
@@ -59,7 +59,7 @@ export default function ProblemSolution() {
                 Nossa <span className="gradient-text">Solução</span>
               </h3>
               <p className="text-muted-foreground text-lg leading-relaxed mb-6">
-                Utilizamos análises avançadas e insights estratégicos para criar campanhas de marketing mensuráveis, escaláveis e lucrativas. Chega de adivinhação—apenas resultados.
+                Utilizamos análises avançadas e insights estratégicos para criar campanhas de marketing mensuráveis, escaláveis e lucrativas. Chega de adivinhação, apenas resultados.
               </p>
               <ul className="space-y-3 mb-8">
                 {[
