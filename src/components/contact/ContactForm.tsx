@@ -49,20 +49,27 @@ export default function ContactForm() {
       
       formData.append('bot-field', ''); // Honeypot field
 
-      // Submit to Netlify Forms endpoint
-      const response = await fetch('/', {
+      // Submit to Netlify Forms via API route (more reliable with Next.js)
+      const response = await fetch('/api/netlify-form', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        headers: { 
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
         body: formData.toString(),
       });
 
-      if (!response.ok) {
-        throw new Error('Erro ao enviar formulário');
+      const result = await response.json();
+      
+      if (response.ok && result.success) {
+        setIsSubmitted(true);
+        reset();
+      } else {
+        console.error('Form submission error:', {
+          status: response.status,
+          result
+        });
+        throw new Error(result.error || 'Erro ao enviar formulário');
       }
-
-      // Show success message
-      setIsSubmitted(true);
-      reset();
     } catch (error) {
       console.error("Erro ao enviar formulário:", error);
       alert("Erro ao enviar formulário. Por favor, tente novamente.");
