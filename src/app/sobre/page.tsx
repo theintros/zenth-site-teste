@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Sobre a Zenth - Agência de Marketing Digital Data-Driven",
     description: "Somos especialistas em transformar dados em resultados. Conheça nossa história, valores e metodologia que já ajudou +75 empresas a crescerem.",
-    url: "https://zenth.com.br/about",
+    url: "https://zenth.com.br/sobre",
     type: "website",
   },
   twitter: {

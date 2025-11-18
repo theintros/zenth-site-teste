@@ -134,7 +134,7 @@ export default function PricingCards() {
                     ))}
                   </ul>
 
-                  <Link href="/contact" className="w-full">
+                  <Link href="/contato" className="w-full">
                     <motion.button
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}

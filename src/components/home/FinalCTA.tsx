@@ -9,10 +9,13 @@ import { ArrowRight, CheckCircle } from "phosphor-react";
 import { BorderTrail } from "@/components/ui/border-trail";
 
 const formSchema = z.object({
-  name: z.string().min(2, "Nome deve ter pelo menos 2 caracteres"),
+  name: z.string().min(2, "Nome deve ter no mínimo 2 caracteres"),
   email: z.string().email("Por favor, insira um e-mail válido"),
   company: z.string().min(2, "Nome da empresa é obrigatório"),
-  message: z.string().min(10, "Mensagem deve ter pelo menos 10 caracteres"),
+  phone: z.string().optional(),
+  service: z.string().min(1, "Por favor, selecione um serviço"),
+  budget: z.string().min(1, "Por favor, selecione a média de faturamento mensal"),
+  message: z.string().min(10, "Mensagem deve ter no mínimo 10 caracteres"),
 });
 
 type FormData = z.infer<typeof formSchema>;
@@ -30,7 +33,7 @@ export default function FinalCTA() {
 
   const onSubmit = async (data: FormData) => {
     try {
-      console.log('Submitting form with data:', { name: data.name, email: data.email });
+      console.log('Submitting form with data:', { name: data.name, email: data.email, service: data.service });
       
       // Prepare form data for Netlify Forms
       const formData = new URLSearchParams();
@@ -38,7 +41,14 @@ export default function FinalCTA() {
       formData.append('name', data.name);
       formData.append('email', data.email);
       formData.append('company', data.company);
+      formData.append('service', data.service);
+      formData.append('budget', data.budget);
       formData.append('message', data.message);
+      
+      if (data.phone) {
+        formData.append('phone', data.phone);
+      }
+      
       formData.append('bot-field', ''); // Honeypot field
 
       // Submit directly to Netlify Forms using the static HTML file
@@ -64,19 +74,17 @@ export default function FinalCTA() {
         status: response.status,
         statusText: response.statusText,
         ok: response.ok,
-        headers: Object.fromEntries(response.headers.entries())
       });
 
-      const result = await response.json();
-      
-      if (response.ok && result.success) {
-        console.log('Form submitted successfully!', result);
+      // Netlify Forms returns HTML, not JSON, so we check status only
+      if (response.ok || response.status === 200 || response.status === 201 || response.status === 302) {
+        console.log('Form submitted successfully!');
         setIsSubmitted(true);
         reset();
       } else {
         console.error('Form submission error:', {
           status: response.status,
-          result
+          statusText: response.statusText
         });
         // Still show success - Netlify Forms processes asynchronously
         console.log('Showing success message anyway - Netlify may process asynchronously');
@@ -90,6 +98,28 @@ export default function FinalCTA() {
       reset();
     }
   };
+
+  const services = [
+    "Gestão de Tráfego Pago",
+    "Serviços Criativos",
+    "Posicionamento de Marca",
+    "Chatbots e Automações com IA",
+    "E-commerce & Conversão",
+    "Marketing Digital",
+    "Sites, Landing Pages e Sistemas",
+    "Análise de Dados",
+    "Automação de Marketing",
+    "Outro",
+  ];
+
+  const monthlyRevenues = [
+    "R$ 25.000 - R$ 50.000",
+    "R$ 50.000 - R$ 100.000",
+    "R$ 100.000 - R$ 250.000",
+    "R$ 250.000 - R$ 500.000",
+    "R$ 500.000 - R$ 1.000.000",
+    "R$ 1.000.000+",
+  ];
 
   return (
     <section className="relative py-32 overflow-hidden">
@@ -229,16 +259,64 @@ export default function FinalCTA() {
                   </div>
                 </div>
 
+                <div className="grid md:grid-cols-2 gap-6">
+                  <div>
+                    <input
+                      {...register("company")}
+                      type="text"
+                      placeholder="Nome da Empresa"
+                      className="w-full px-6 py-4 glass-card rounded-xl bg-secondary/50 border focus:border-primary/50 focus:outline-none transition-colors"
+                    />
+                    {errors.company && (
+                      <p className="text-destructive text-sm mt-2">
+                        {errors.company.message}
+                      </p>
+                    )}
+                  </div>
+                  <div>
+                    <input
+                      {...register("phone")}
+                      type="tel"
+                      placeholder="Telefone (opcional)"
+                      className="w-full px-6 py-4 glass-card rounded-xl bg-secondary/50 border focus:border-primary/50 focus:outline-none transition-colors"
+                    />
+                  </div>
+                </div>
+
                 <div>
-                  <input
-                    {...register("company")}
-                    type="text"
-                    placeholder="Nome da Empresa"
+                  <select
+                    {...register("service")}
                     className="w-full px-6 py-4 glass-card rounded-xl bg-secondary/50 border focus:border-primary/50 focus:outline-none transition-colors"
-                  />
-                  {errors.company && (
+                  >
+                    <option value="">Serviço de Interesse *</option>
+                    {services.map((service) => (
+                      <option key={service} value={service}>
+                        {service}
+                      </option>
+                    ))}
+                  </select>
+                  {errors.service && (
                     <p className="text-destructive text-sm mt-2">
-                      {errors.company.message}
+                      {errors.service.message}
+                    </p>
+                  )}
+                </div>
+
+                <div>
+                  <select
+                    {...register("budget")}
+                    className="w-full px-6 py-4 glass-card rounded-xl bg-secondary/50 border focus:border-primary/50 focus:outline-none transition-colors"
+                  >
+                    <option value="">Média de Faturamento Mensal *</option>
+                    {monthlyRevenues.map((revenue) => (
+                      <option key={revenue} value={revenue}>
+                        {revenue}
+                      </option>
+                    ))}
+                  </select>
+                  {errors.budget && (
+                    <p className="text-destructive text-sm mt-2">
+                      {errors.budget.message}
                     </p>
                   )}
                 </div>

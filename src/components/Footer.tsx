@@ -11,9 +11,9 @@ export default function Footer() {
 
   const footerLinks = {
     Empresa: [
-      { label: "Sobre", href: "/about" },
+      { label: "Sobre", href: "/sobre" },
       { label: "Blog", href: "/blog" },
-      { label: "Contato", href: "/contact" },
+      { label: "Contato", href: "/contato" },
     ],
     Serviços: [
       { label: "Análise de Dados", href: "/#services" },

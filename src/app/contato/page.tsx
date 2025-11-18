@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Fale com a Zenth - Consultoria Gratuita em Marketing Digital",
     description: "Agende uma reunião e descubra como podemos ajudar seu negócio a crescer com marketing baseado em dados. Resposta em até 24h.",
-    url: "https://zenth.com.br/contact",
+    url: "https://zenth.com.br/contato",
     type: "website",
   },
   twitter: {

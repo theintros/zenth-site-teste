@@ -50,6 +50,27 @@ export default function Home() {
         <input type="text" name="name" />
         <input type="email" name="email" />
         <input type="text" name="company" />
+        <input type="tel" name="phone" />
+        <select name="service">
+          <option value="Gestão de Tráfego Pago">Gestão de Tráfego Pago</option>
+          <option value="Serviços Criativos">Serviços Criativos</option>
+          <option value="Posicionamento de Marca">Posicionamento de Marca</option>
+          <option value="Chatbots e Automações com IA">Chatbots e Automações com IA</option>
+          <option value="E-commerce & Conversão">E-commerce & Conversão</option>
+          <option value="Marketing Digital">Marketing Digital</option>
+          <option value="Sites, Landing Pages e Sistemas">Sites, Landing Pages e Sistemas</option>
+          <option value="Análise de Dados">Análise de Dados</option>
+          <option value="Automação de Marketing">Automação de Marketing</option>
+          <option value="Outro">Outro</option>
+        </select>
+        <select name="budget">
+          <option value="R$ 25.000 - R$ 50.000">R$ 25.000 - R$ 50.000</option>
+          <option value="R$ 50.000 - R$ 100.000">R$ 50.000 - R$ 100.000</option>
+          <option value="R$ 100.000 - R$ 250.000">R$ 100.000 - R$ 250.000</option>
+          <option value="R$ 250.000 - R$ 500.000">R$ 250.000 - R$ 500.000</option>
+          <option value="R$ 500.000 - R$ 1.000.000">R$ 500.000 - R$ 1.000.000</option>
+          <option value="R$ 1.000.000+">R$ 1.000.000+</option>
+        </select>
         <textarea name="message"></textarea>
         <input type="hidden" name="bot-field" />
       </form>

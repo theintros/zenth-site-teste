@@ -132,14 +132,14 @@ export default function HeroSection() {
                 transition={{ duration: 0.6, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
                 className="flex flex-col sm:flex-row gap-4 justify-center"
               >
-                <Link href="/contact">
+                <Link href="/contato">
                   <InteractiveHoverButton 
                     initialText="Agendar Reunião"
                     hoverText="Comece Sua Jornada"
                     className="w-full sm:w-auto glow-effect"
                   />
                 </Link>
-                <Link href="/about">
+                <Link href="/sobre">
                   <motion.button
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}

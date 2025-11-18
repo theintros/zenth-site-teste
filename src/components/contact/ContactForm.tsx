@@ -74,19 +74,17 @@ export default function ContactForm() {
         status: response.status,
         statusText: response.statusText,
         ok: response.ok,
-        headers: Object.fromEntries(response.headers.entries())
       });
 
-      const result = await response.json();
-      
-      if (response.ok && result.success) {
-        console.log('Form submitted successfully!', result);
+      // Netlify Forms returns HTML, not JSON, so we check status only
+      if (response.ok || response.status === 200 || response.status === 201 || response.status === 302) {
+        console.log('Form submitted successfully!');
         setIsSubmitted(true);
         reset();
       } else {
         console.error('Form submission error:', {
           status: response.status,
-          result
+          statusText: response.statusText
         });
         // Still show success - Netlify Forms processes asynchronously
         console.log('Showing success message anyway - Netlify may process asynchronously');

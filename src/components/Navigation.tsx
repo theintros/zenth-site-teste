@@ -22,9 +22,9 @@ export default function Navigation() {
 
   const navLinks = [
     { href: "/", label: "Início" },
-    { href: "/about", label: "Sobre" },
+    { href: "/sobre", label: "Sobre" },
     { href: "/blog", label: "Blog" },
-    { href: "/contact", label: "Contato" },
+    { href: "/contato", label: "Contato" },
   ];
 
   return (
@@ -81,7 +81,7 @@ export default function Navigation() {
 
           {/* CTA Button */}
           <div className="hidden md:block">
-            <Link href="/contact">
+            <Link href="/contato">
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
@@ -131,7 +131,7 @@ export default function Navigation() {
                   {link.label}
                 </Link>
               ))}
-              <Link href="/contact" onClick={() => setIsMobileMenuOpen(false)}>
+              <Link href="/contato" onClick={() => setIsMobileMenuOpen(false)}>
                 <button className="w-full px-6 py-2.5 bg-primary text-primary-foreground rounded-lg font-medium text-sm hover:opacity-90 transition-opacity">
                   Começar Agora
                 </button>
