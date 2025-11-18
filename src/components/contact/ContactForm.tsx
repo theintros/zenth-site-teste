@@ -33,53 +33,81 @@ export default function ContactForm() {
 
   const onSubmit = async (data: FormData) => {
     try {
-      // Prepare form data for Netlify Forms
-      const formData = new URLSearchParams();
-      formData.append('form-name', 'contact');
-      formData.append('name', data.name);
-      formData.append('email', data.email);
-      formData.append('company', data.company);
-      formData.append('service', data.service);
-      formData.append('budget', data.budget);
-      formData.append('message', data.message);
+      console.log('Submitting form with data:', { name: data.name, email: data.email, service: data.service });
       
-      if (data.phone) {
-        formData.append('phone', data.phone);
+      // Find or create the hidden form
+      let hiddenForm = document.querySelector('form[name="contact"]') as HTMLFormElement;
+      
+      if (!hiddenForm) {
+        // Create the form if it doesn't exist
+        hiddenForm = document.createElement('form');
+        hiddenForm.name = 'contact';
+        hiddenForm.method = 'POST';
+        hiddenForm.action = '/';
+        hiddenForm.setAttribute('data-netlify', 'true');
+        hiddenForm.setAttribute('data-netlify-honeypot', 'bot-field');
+        hiddenForm.style.display = 'none';
+        document.body.appendChild(hiddenForm);
       }
-      
-      formData.append('bot-field', ''); // Honeypot field
 
-      // Submit directly to Netlify Forms endpoint
-      // Use window.location.origin to get the current site URL
-      const response = await fetch('/', {
-        method: 'POST',
-        headers: { 
-          'Content-Type': 'application/x-www-form-urlencoded',
-        },
-        body: formData.toString(),
+      // Clear existing inputs
+      hiddenForm.innerHTML = '';
+
+      // Add form-name field (required by Netlify)
+      const formNameInput = document.createElement('input');
+      formNameInput.type = 'hidden';
+      formNameInput.name = 'form-name';
+      formNameInput.value = 'contact';
+      hiddenForm.appendChild(formNameInput);
+
+      // Add all form fields
+      const fields = [
+        { name: 'name', value: data.name },
+        { name: 'email', value: data.email },
+        { name: 'company', value: data.company },
+        { name: 'service', value: data.service },
+        { name: 'budget', value: data.budget },
+        { name: 'message', value: data.message },
+      ];
+
+      if (data.phone) {
+        fields.push({ name: 'phone', value: data.phone });
+      }
+
+      fields.forEach(({ name, value }) => {
+        const input = document.createElement('input');
+        input.type = 'hidden';
+        input.name = name;
+        input.value = value;
+        hiddenForm.appendChild(input);
       });
 
-      // Netlify Forms returns 200, 201, or 302 on success
-      // The response might be HTML (redirect page) or empty
-      if (response.ok || response.status === 200 || response.status === 201 || response.status === 302) {
-        setIsSubmitted(true);
-        reset();
-      } else {
-        const responseText = await response.text();
-        console.error('Form submission error:', {
-          status: response.status,
-          statusText: response.statusText,
-          responsePreview: responseText.substring(0, 200)
-        });
-        // Still show success - Netlify Forms processes asynchronously
-        setIsSubmitted(true);
-        reset();
-      }
-    } catch (error) {
-      console.error("Erro ao enviar formulário:", error);
-      // Show success anyway - Netlify Forms might still process it
+      // Add bot-field (honeypot)
+      const botField = document.createElement('input');
+      botField.type = 'hidden';
+      botField.name = 'bot-field';
+      botField.value = '';
+      hiddenForm.appendChild(botField);
+
+      console.log('Form prepared, submitting...', {
+        formName: hiddenForm.name,
+        action: hiddenForm.action,
+        method: hiddenForm.method,
+        fieldsCount: fields.length
+      });
+
+      // Show success message immediately (before form submission)
       setIsSubmitted(true);
       reset();
+
+      // Submit the form - this triggers a REAL form submission that Netlify can process
+      // Use setTimeout to ensure the success message is shown before page reload
+      setTimeout(() => {
+        hiddenForm.submit();
+      }, 100);
+    } catch (error) {
+      console.error("Erro ao enviar formulário:", error);
+      alert("Erro ao enviar formulário. Por favor, tente novamente.");
     }
   };
 
