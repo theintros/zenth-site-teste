@@ -8,22 +8,44 @@ export async function POST(request: NextRequest) {
     const params = new URLSearchParams(body);
     const formName = params.get('form-name') || 'unknown';
 
-    // In Netlify, we need to forward the request to the Netlify Forms endpoint
-    // The Netlify Forms endpoint is at the root URL of the site
-    // We'll use the request URL to determine the site URL
-    const url = new URL(request.url);
-    const siteUrl = process.env.URL || process.env.DEPLOY_PRIME_URL || process.env.NETLIFY_URL || 
-                    `${url.protocol}//${url.host}`;
+    // Get the site URL - prioritize Netlify environment variables
+    // These are set automatically by Netlify during build/deploy
+    const siteUrl = 
+      process.env.URL || // Production URL
+      process.env.DEPLOY_PRIME_URL || // Deploy preview URL
+      process.env.NETLIFY_URL || // Netlify URL
+      request.headers.get('x-forwarded-host') ? 
+        `https://${request.headers.get('x-forwarded-host')}` : 
+        null;
+
+    if (!siteUrl) {
+      // Fallback: construct from request URL
+      const url = new URL(request.url);
+      const host = request.headers.get('host') || url.host;
+      const protocol = request.headers.get('x-forwarded-proto') || url.protocol.replace(':', '');
+      const fallbackUrl = `${protocol}://${host}`;
+      
+      console.error('No Netlify URL found, using fallback:', fallbackUrl);
+      // Still try to submit, but log the issue
+    }
+
+    const targetUrl = siteUrl || `${request.headers.get('x-forwarded-proto') || 'https'}://${request.headers.get('host') || 'localhost'}`;
 
     console.log('Submitting form to Netlify:', { 
       formName, 
-      siteUrl,
-      bodyPreview: body.substring(0, 150)
+      targetUrl,
+      bodyPreview: body.substring(0, 150),
+      env: {
+        URL: process.env.URL,
+        DEPLOY_PRIME_URL: process.env.DEPLOY_PRIME_URL,
+        NETLIFY_URL: process.env.NETLIFY_URL
+      }
     });
 
     // Submit to Netlify Forms endpoint at the root of the site
     // Netlify Forms processes POST requests to the root URL
-    const response = await fetch(`${siteUrl}/`, {
+    // Use the full URL to ensure it goes directly to Netlify, not through Next.js
+    const response = await fetch(`${targetUrl}/`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
