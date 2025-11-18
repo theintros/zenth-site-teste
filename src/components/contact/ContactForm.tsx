@@ -215,7 +215,9 @@ export default function ContactForm() {
             </div>
 
             <div>
-              <label className="block text-sm font-medium mb-2">Telefone</label>
+              <label className="block text-sm font-medium mb-2">
+                Telefone <span className="text-destructive">*</span>
+              </label>
               <input
                 {...register("phone")}
                 name="phone"
@@ -223,6 +225,11 @@ export default function ContactForm() {
                 className="w-full px-4 py-3 glass-card rounded-lg bg-secondary/50 border focus:border-primary/50 focus:outline-none transition-colors"
                 placeholder="(17) 99284-1484"
               />
+              {errors.phone && (
+                <p className="text-destructive text-sm mt-2">
+                  {errors.phone.message}
+                </p>
+              )}
             </div>
           </div>
 
