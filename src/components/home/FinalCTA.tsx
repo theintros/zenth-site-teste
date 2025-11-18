@@ -41,15 +41,18 @@ export default function FinalCTA() {
       formData.append('message', data.message);
       formData.append('bot-field', ''); // Honeypot field
 
-      console.log('Sending POST request to Netlify Forms...', {
+      // Submit directly to Netlify Forms using absolute URL
+      // This bypasses Next.js routing and goes directly to Netlify
+      const netlifyUrl = window.location.origin;
+      
+      console.log('Sending POST request directly to Netlify Forms...', {
         formName: 'cta-contact',
-        url: window.location.origin + '/',
-        dataSize: formData.toString().length
+        url: `${netlifyUrl}/`,
+        dataSize: formData.toString().length,
+        formData: formData.toString()
       });
 
-      // Submit via API route which forwards to Netlify Forms
-      // This avoids Next.js intercepting the POST request
-      const response = await fetch('/api/netlify-form', {
+      const response = await fetch(`${netlifyUrl}/`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded',
