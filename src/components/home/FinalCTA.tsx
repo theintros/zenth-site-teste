@@ -12,7 +12,16 @@ const formSchema = z.object({
   name: z.string().min(2, "Nome deve ter no mínimo 2 caracteres"),
   email: z.string().email("Por favor, insira um e-mail válido"),
   company: z.string().min(2, "Nome da empresa é obrigatório"),
-  phone: z.string().optional(),
+  phone: z.string()
+    .min(10, "Telefone deve ter no mínimo 10 dígitos")
+    .max(15, "Telefone deve ter no máximo 15 dígitos")
+    .regex(/^[\d\s\(\)\-\+]+$/, "Telefone deve conter apenas números, espaços, parênteses, hífens ou o símbolo +")
+    .refine((val) => {
+      // Remove caracteres não numéricos para validação
+      const numbersOnly = val.replace(/\D/g, '');
+      // Valida formato brasileiro: (XX) XXXXX-XXXX ou (XX) XXXX-XXXX ou 11 dígitos com DDD
+      return numbersOnly.length >= 10 && numbersOnly.length <= 11;
+    }, "Telefone inválido. Use o formato (XX) XXXXX-XXXX ou (XX) XXXX-XXXX"),
   service: z.string().min(1, "Por favor, selecione um serviço"),
   budget: z.string().min(1, "Por favor, selecione a média de faturamento mensal"),
   message: z.string().min(10, "Mensagem deve ter no mínimo 10 caracteres"),
@@ -45,9 +54,7 @@ export default function FinalCTA() {
       formData.append('budget', data.budget);
       formData.append('message', data.message);
       
-      if (data.phone) {
-        formData.append('phone', data.phone);
-      }
+      formData.append('phone', data.phone);
       
       formData.append('bot-field', ''); // Honeypot field
 
@@ -277,9 +284,14 @@ export default function FinalCTA() {
                     <input
                       {...register("phone")}
                       type="tel"
-                      placeholder="Telefone (opcional)"
+                      placeholder="Telefone *"
                       className="w-full px-6 py-4 glass-card rounded-xl bg-secondary/50 border focus:border-primary/50 focus:outline-none transition-colors"
                     />
+                    {errors.phone && (
+                      <p className="text-destructive text-sm mt-2">
+                        {errors.phone.message}
+                      </p>
+                    )}
                   </div>
                 </div>
 
