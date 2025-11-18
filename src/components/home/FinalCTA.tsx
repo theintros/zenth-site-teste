@@ -30,53 +30,27 @@ export default function FinalCTA() {
 
   const onSubmit = async (data: FormData) => {
     try {
-      // Create a real HTML form element and submit it programmatically
-      // This is the ONLY reliable way to submit to Netlify Forms with Next.js
-      const form = document.createElement('form');
-      form.method = 'POST';
-      form.action = '/';
-      form.setAttribute('name', 'cta-contact');
-      form.setAttribute('netlify', '');
-      form.setAttribute('netlify-honeypot', 'bot-field');
-      form.style.display = 'none';
+      // Prepare form data for Netlify Forms
+      const formData = new URLSearchParams();
+      formData.append('form-name', 'cta-contact');
+      formData.append('name', data.name);
+      formData.append('email', data.email);
+      formData.append('company', data.company);
+      formData.append('message', data.message);
+      formData.append('bot-field', ''); // Honeypot field
 
-      // Add form-name field (required by Netlify)
-      const formNameField = document.createElement('input');
-      formNameField.type = 'hidden';
-      formNameField.name = 'form-name';
-      formNameField.value = 'cta-contact';
-      form.appendChild(formNameField);
-
-      // Add all form fields
-      const fields = [
-        { name: 'name', value: data.name },
-        { name: 'email', value: data.email },
-        { name: 'company', value: data.company },
-        { name: 'message', value: data.message },
-      ];
-
-      fields.forEach(({ name, value }) => {
-        const input = document.createElement('input');
-        input.type = 'hidden';
-        input.name = name;
-        input.value = value;
-        form.appendChild(input);
+      // Submit to Netlify Forms endpoint
+      const response = await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: formData.toString(),
       });
 
-      // Add bot-field (honeypot)
-      const botField = document.createElement('input');
-      botField.type = 'hidden';
-      botField.name = 'bot-field';
-      botField.value = '';
-      form.appendChild(botField);
+      if (!response.ok) {
+        throw new Error('Erro ao enviar formulário');
+      }
 
-      // Append form to body
-      document.body.appendChild(form);
-      
-      // Submit the form - this triggers a REAL form submission that Netlify can process
-      form.submit();
-
-      // Show success message immediately
+      // Show success message
       setIsSubmitted(true);
       reset();
     } catch (error) {

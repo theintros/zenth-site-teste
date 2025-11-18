@@ -44,6 +44,16 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <div className="min-h-screen">
+      {/* Netlify Form Detection - Hidden form for CTA */}
+      <form name="cta-contact" data-netlify="true" data-netlify-honeypot="bot-field" hidden>
+        <input type="hidden" name="form-name" value="cta-contact" />
+        <input type="text" name="name" />
+        <input type="email" name="email" />
+        <input type="text" name="company" />
+        <textarea name="message"></textarea>
+        <input type="hidden" name="bot-field" />
+      </form>
+      
       <Navigation />
       <main>
         <HeroSection />
