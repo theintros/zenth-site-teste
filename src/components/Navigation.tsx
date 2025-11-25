@@ -23,6 +23,7 @@ export default function Navigation() {
   const navLinks = [
     { href: "/", label: "Início" },
     { href: "/sobre", label: "Sobre" },
+    { href: "/portfolio", label: "Portfólio" },
     { href: "/blog", label: "Blog" },
     { href: "/contato", label: "Contato" },
   ];
